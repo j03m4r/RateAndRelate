@@ -1,0 +1,60 @@
+import Tooltip from "@/components/general/Tooltip";
+import { useUser } from "@/hooks/useUser";
+import { calculatePreviousDate } from "@/libs/DateCalculations";
+import { useSessionContext } from "@supabase/auth-helpers-react";
+import { useEffect, useState } from "react";
+import { twMerge } from "tailwind-merge";
+
+interface DayProps {
+    dayNum: number;
+    user_id: string;
+};
+
+const Day: React.FC<DayProps> = ({
+    dayNum, user_id
+}) => {
+    const thisYear = new Date(new Date().getFullYear(), 0).getTime();
+    const date = new Date(thisYear+(dayNum*24*60*60*1000));
+    date.setDate(date.getDate()+1);
+    date.setHours(16);
+    date.setMinutes(59);
+    const prevDay = calculatePreviousDate(date);
+
+    const { supabaseClient } = useSessionContext();
+    const { user } = useUser();
+    const [rating, setRating] = useState(-1);
+
+    let rowStart = "row-start-1";
+    if (dayNum===0) {
+        rowStart = `row-start-${prevDay.getDay()+1}`
+    }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const { data, error } = await supabaseClient.from('ratings')
+            .select('rating, user_id').eq('user_id', user_id)
+            .gte('created_at', prevDay.toISOString()).lte('created_at', date.toISOString())
+            .is('replying_to_rating_id', null);
+
+            if (!error && data) {
+                if (data[0]===undefined) return;
+                setRating(data[0].rating);
+            } else {
+                setRating(-1);
+            }
+        };
+
+        fetchData();
+    }, [, supabaseClient, user?.id]);
+
+    return (
+        <Tooltip content={prevDay.toDateString()}>
+            <div className={twMerge(`w-4 h-4 md:w-3 md:h-3 cu rounded-sm group`, 
+            dayNum===0 ? rowStart : null, rating===-1 ? 'hover:border hover:border-yellow' : rating>=7 ? 
+            'bg-spotifygreen cursor-pointer' : rating>=4 ? 'bg-okayday cursor-pointer' : 'bg-error cursor-pointer')}>
+            </div>
+        </Tooltip>
+    );
+}
+
+export default Day;
