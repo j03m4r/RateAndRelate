@@ -2,7 +2,7 @@
 
 import RatingBox from "@/components/general/RatingBox";
 import MainFeed from "@/components/general/MainFeed";
-import RateDayButton from "@/components/general/RateDayButton";
+import RateDayButton from "@/components/buttons/RateDayButton";
 import { Rating } from "@/types";
 import { useEffect, useState } from "react";
 
@@ -29,16 +29,13 @@ const ExplorePageContent: React.FC<ExplorePageProps> = ({
     }, [currentRating, publicRatings.length]);
 
     return (
-        <div className="flex flex-col h-full items-center pt-24 gap-y-10 md:gap-y-16"> {/* MAIN CONTAINER OF RIGHT CONTENT */}
+        <div className="flex flex-col h-full items-center pt-24 gap-y-10 md:gap-y-16 text-forestGreen"> {/* MAIN CONTAINER OF RIGHT CONTENT */}
             <div className="flex flex-col-reverse md:flex-row justify-evenly w-full h-fit gap-x-10 md:gap-x-16 gap-y-10 px-10 md:px-16 text-white"> {/* Daily stats larger container */}
-                <div className="select-none flex flex-col justify-center items-center w-full h-[36vh] 
-                border border-lime rounded-se-xl rounded-bl-xl"> {/* Your rating today container */}
                     {currentRating ? (
                         <RatingBox header="You" rating={currentRating.rating} />
                     ) : (
                         <RateDayButton />
                     )}
-                </div>
                 <RatingBox header="Global" rating={Number(publicRating.toFixed(1))} /> {/* Your community's rating of today */}
             </div>
             <MainFeed ratings={publicRatings} /> {/* Twitter-like feed */}

@@ -1,7 +1,7 @@
 import Button from "@/components/buttons/Button";
 import FollowageButton from "@/components/buttons/FollowageButton";
 import Avatar from "@/components/general/Avatar";
-import RateDayButton from "@/components/general/RateDayButton";
+import RateDayButton from "@/components/buttons/RateDayButton";
 import useLoadAvatar from "@/hooks/useLoadAvatar";
 import useRateModal from "@/hooks/useRateModal";
 import { useUser } from "@/hooks/useUser";
@@ -22,7 +22,6 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     profile, currentRating, followerCount, followingCount
 }) => {
     const avatar_url = useLoadAvatar(profile.avatar_url || '');
-    const rateModal = useRateModal();
 
     const { user } = useUser();
 
@@ -40,6 +39,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             return;
         } else if (user.id!==profile.id) {
             setIsOwnProfile(false);
+        } else {
+            setIsOwnProfile(true);
         }
     }, [user]);
 

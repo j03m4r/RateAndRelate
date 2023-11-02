@@ -71,7 +71,7 @@ const RatingCard: React.FC<RatingCardProps> = ({
                             </div>
                             <div className="flex flex-col gap-y-12">
                                 {isCommenting ? (
-                                    <CommentForm ratingId={rating.id} setIsCommenting={(isCommenting) => setIsCommenting(isCommenting)} 
+                                    <CommentForm ratingId={rating.id} profileId={rating.profiles.id} setIsCommenting={(isCommenting) => setIsCommenting(isCommenting)} 
                                     onComment={() => {fetchData(), setIsCommenting((prev) => !prev)}} />
                                 ) : null}
                                 <div>
@@ -101,7 +101,7 @@ const RatingCard: React.FC<RatingCardProps> = ({
                                 </div>
                                 <div className="flex flex-col gap-y-12">
                                     {isCommenting ? (
-                                        <CommentForm ratingId={rating.id} setIsCommenting={(isCommenting) => setIsCommenting(isCommenting)} 
+                                        <CommentForm ratingId={rating.id} profileId={rating.profiles.id} setIsCommenting={(isCommenting) => setIsCommenting(isCommenting)} 
                                         onComment={() => {fetchData(), setIsCommenting((prev) => !prev)}} />
                                     ) : null}
                                     {replies.map((replyRating) => (
@@ -129,7 +129,7 @@ const RatingCard: React.FC<RatingCardProps> = ({
                             <div className="h-[7.2vh] w-full">
                             </div>
                             {isCommenting ? (
-                                <CommentForm ratingId={rating.id} setIsCommenting={(isCommenting) => setIsCommenting(isCommenting)} 
+                                <CommentForm ratingId={rating.id} profileId={rating.profiles.id} setIsCommenting={(isCommenting) => setIsCommenting(isCommenting)} 
                                 onComment={() => {fetchData(), setIsCommenting((prev) => !prev)}} />
                             ) : null}
                         </div>

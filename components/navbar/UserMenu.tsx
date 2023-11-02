@@ -15,6 +15,7 @@ import useUserModal from '@/hooks/useUserModal';
 import { Notification } from '@/types';
 import FollowRequestNotification from '../general/FollowRequestNotification';
 import SearchUsers from './SearchUsers';
+import CommentNotification from '../general/CommentNotification';
 
 export const revalidate = 0;
 
@@ -88,6 +89,8 @@ const UserMenu: React.FC<UserMenuProps> = ({
     
                         if (notification.type===1) {
                             notificationContent = <FollowRequestNotification notification={notification} />
+                        } else if (notification.type===2) {
+                            notificationContent = <CommentNotification notification={notification} />
                         }
     
                         return (
@@ -97,7 +100,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                         );
                     })
                 ) : (
-                    <div className="select-none flex flex-col justify-center items-center py-5 text-lg text-orange">
+                    <div className="select-none flex flex-col justify-center items-center py-5 text-lg">
                         No notifications!
                     </div>
                 )}
@@ -115,13 +118,13 @@ const UserMenu: React.FC<UserMenuProps> = ({
             {user ? (
                 <div className="flex gap-x-5 items-center">
                     <div onClick={() => userMenuState===UserMenuState.SEARCH ? setUserMenuState(UserMenuState.NAVIGATION) : setUserMenuState(UserMenuState.SEARCH)} 
-                    className={twMerge(`relative flex select-none cursor-pointer text-lime hover:text-orange transition duration-200`, 
-                    userModal.isOpen ? 'opacity-100 translate-x-0' : 'translate-x-100 opacity-0', userMenuState===UserMenuState.SEARCH ? 'text-yellow' : 'text-lime')}>
+                    className={twMerge(`relative flex select-none cursor-pointer hover:text-orange transition duration-200`, 
+                    userModal.isOpen ? 'opacity-100 translate-x-0' : 'translate-x-100 opacity-0', userMenuState===UserMenuState.SEARCH ? 'text-orange' : 'text-forestGreen')}>
                         <BsSearch size={20} />
                     </div>
                     <div onClick={() => userMenuState===UserMenuState.NOTIFICATIONS ? setUserMenuState(UserMenuState.NAVIGATION) : setUserMenuState(UserMenuState.NOTIFICATIONS)} 
-                    className={twMerge(`relative flex select-none cursor-pointer text-lime hover:text-orange transition duration-200`, 
-                    userModal.isOpen ? 'opacity-100 translate-x-0' : 'translate-x-40 opacity-0', userMenuState===UserMenuState.NOTIFICATIONS ? 'text-yellow' : 'text-lime')}>
+                    className={twMerge(`relative flex select-none cursor-pointer hover:text-orange transition duration-200`, 
+                    userModal.isOpen ? 'opacity-100 translate-x-0' : 'translate-x-40 opacity-0', userMenuState===UserMenuState.NOTIFICATIONS ? 'text-orange' : 'text-forestGreen')}>
                         <BsBell size={22} />
                         <div className={twMerge(`absolute select-none right-0 top-0 rounded-full w-[10px] h-[10px] bg-orange`, notifications.length ? 'block' : 'hidden')} />
                     </div>

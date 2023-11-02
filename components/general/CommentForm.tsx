@@ -13,12 +13,13 @@ import { twMerge } from "tailwind-merge";
 
 interface CommentFormProps {
     ratingId: number;
+    profileId: string;
     onComment: () => void;
     setIsCommenting: (isCommenting: boolean) => void;
 };
 
 const CommentForm: React.FC<CommentFormProps> = ({
-    ratingId, onComment, setIsCommenting
+    ratingId, profileId, onComment, setIsCommenting
 }) => {
     const { user, profile } = useUser();
     const avatar_url = useLoadAvatar(profile?.avatar_url || '');
@@ -58,6 +59,15 @@ const CommentForm: React.FC<CommentFormProps> = ({
         });
     };
 
+    const sendNotification = async () => {
+        if (!user) {
+            return;
+        }
+
+        const { error } = await supabaseClient.from('notifications')
+        .insert({type: 2, to_profile_id: profileId, from_profile_id: user.id});
+    };
+
     const onSubmit: SubmitHandler<FieldValues> = async (values) => {
         try {
             if (!user) {
@@ -86,6 +96,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
             toast.error('Something went wrong');
         } finally {
             setIsLoading(false);
+            sendNotification();
             onComment();
         }
     };
@@ -97,19 +108,19 @@ const CommentForm: React.FC<CommentFormProps> = ({
     return (
         <div className="relative flex flex-col w-full h-fit">
             <div className="select-none flex flex-col justify-center items-center w-full md:px-10 lg:px-20 py-5 gap-y-5 text-forestGreen
-            rounded-se-xl rounded-bl-xl border border-charcoal shadow-md h-[48vh] lg:h-[36vh] min-h-[280px]">
+            rounded-se-xl rounded-bl-xl border border-forestGreen shadow-md h-[48vh] lg:h-[36vh] min-h-[280px]">
                 <div className="flex justify-around items-center w-full h-fit gap-x-10 gap-y-5 lg:gap-y-0">
                     <div className="flex flex-col items-center justify-around w-full lg:w-1/2 pb-2 gap-y-2">
-                        <div className={twMerge(`font-bold text-center align-top text-orange text-7xl md:text-8xl`, rating>=7 ? 
+                        <div className={twMerge(`font-bold text-center align-top text-7xl md:text-8xl`, rating>=7 ? 
                         'text-spotifygreen' : rating>=4 ? 'text-okayday' : 'text-error')}> {/* Rating Number */}
                             {rating}
                         </div>
                         <div className="flex justify-around items-center w-1/2 h-auto">
-                            <Button className="border border-charcoal p-2 rounded-full" onClick={onDecrement}
+                            <Button className="border border-forestGreen p-2 rounded-full" onClick={onDecrement}
                             disabled={rating<1 || isLoading}>
                                 <MdKeyboardArrowLeft size={20} />
                             </Button>
-                            <Button className="border border-charcoal p-2 rounded-full" onClick={onIncrement}
+                            <Button className="border border-forestGreen p-2 rounded-full" onClick={onIncrement}
                             disabled={rating>9 || isLoading}>
                                 <MdKeyboardArrowRight size={20} />
                             </Button>
@@ -133,7 +144,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
                         {/* MESSAGE OF THE DAY */}
                         <textarea id="message" {...register('message', { required: false })} value={message || ""} 
                         placeholder="Message of the day..." disabled={isLoading} rows={1} className="w-full bg-cream resize-none 
-                        rounded-se-xl rounded-bl-xl border border-charcoal px-6 py-3 focus:outline-none placeholder:text-forestGreen"/>
+                        rounded-se-xl rounded-bl-xl border border-forestGreen px-6 py-3 focus:outline-none placeholder:text-forestGreen"/>
                         <div className={twMerge(`font-extralight self-end`, message.length>50 ? 
                         'text-error' : 'text-forestGreen')}>
                             {message.length}/50
@@ -141,7 +152,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
                     </div>
                     <div className="flex flex-col gap-y-2 right-6 bottom-3 h-fit w-fit"> {/* Rating interaction buttons */}
                         <Button onClick={handleSubmit(onSubmit)} disabled={isLoading || message.length > 50} 
-                        className="border border-charcoal bg-cream text-xl px-4 py-2
+                        className="border border-forestGreen bg-cream text-xl px-4 py-2
                         hover:rounded-se-xl hover:rounded-bl-xl hover:bg-opacity-0 duration-200 ease-in-out">
                             Rate
                         </Button>

@@ -15,7 +15,7 @@ const FollowageProfileItem: React.FC<FollowageProfileItemProps> = ({
     const avatar_url = useLoadAvatar(profile.avatar_url);
     return (
         <Link href={`/profile/${profile.username}`} className="flex flex-row w-full py-4 px-8 mt-2 items-center justify-start gap-x-2
-        hover:bg-yellow hover:text-primary text-yellow transition duration-300 cursor-pointer rounded-se-xl rounded-bl-xl">
+        hover:bg-forestGreen hover:text-white text-forestGreen transition duration-300 cursor-pointer rounded-se-xl rounded-bl-xl">
             <Avatar src={avatar_url} />
             <div className="text-lg hover:underline cursor-pointer">{profile.username}</div>
         </Link>

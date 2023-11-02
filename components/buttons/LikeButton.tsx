@@ -6,6 +6,7 @@ import { useUser } from "@/hooks/useUser";
 import { useSessionContext } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
+import { LikedRating } from "@/types";
 
 interface LikeButtonProps {
     ratingId: number;
@@ -19,24 +20,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
     const { user, isLoading } = useUser();
 
     const [isLiked, setIsLiked] = useState(false);
-    const [numLikes, setNumLikes] = useState(0);
-
-    useEffect(() => {
-        if (!user || isLoading) {
-            return;
-        }
-
-        const fetchData = async () => {
-            const { data, error } = await supabaseClient.from('liked_ratings').select('*')
-            .eq('profile_id', user.id).eq('rating_id', ratingId).single();
-
-            if (!error && data) {
-                setIsLiked(true);
-            }
-        };
-
-        fetchData();
-    }, [ratingId, supabaseClient, user, isLoading]);
+    const [likes, setLikes] = useState<LikedRating[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,7 +32,9 @@ const LikeButton: React.FC<LikeButtonProps> = ({
             .eq('rating_id', ratingId);
 
             if (!error && data) {
-                setNumLikes(data.length);
+                setLikes(data);
+                const filteredLikes = data.filter((item) => item.profile_id===user.id);
+                if (filteredLikes.length) setIsLiked(true);
             }
         };
 
@@ -70,6 +56,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
                 toast.error(error.message);
             } else {
                 setIsLiked(false);
+                setLikes((prev) => (prev.slice(0, prev.length-1)))
             }
         } else {
             const { error } = await supabaseClient.from('liked_ratings').insert({rating_id: ratingId, profile_id: user.id});
@@ -78,6 +65,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
                 toast.error(error.message);
             } else {
                 setIsLiked(true);
+                setLikes((prev) => ([...prev, { rating_id: ratingId, profile_id: user.id}]))
                 toast.success('Liked!');
             }
         }
@@ -89,8 +77,8 @@ const LikeButton: React.FC<LikeButtonProps> = ({
         <Button onClick={handleLike} className="relative text-forestGreen hover:text-orange duration-200 transition ease-in-out">
             <Icon size={28} />
             <div className={twMerge(`absolute -right-1 -bottom-1 font-bold text-sm`, 
-            numLikes >= 1 ? 'block' : 'hidden')}>
-                {numLikes >= 99 ? "99+" : numLikes}
+            likes.length >= 1 ? 'block' : 'hidden')}>
+                {likes.length >= 99 ? "99+" : likes.length}
             </div>
         </Button>
     );

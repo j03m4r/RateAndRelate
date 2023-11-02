@@ -1,4 +1,4 @@
-import Day from "./Day";
+import Day from "@/components/general/Day";
 
 interface RatingCalendarProps {
     user_id: string;

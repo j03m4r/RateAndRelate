@@ -16,7 +16,7 @@ const Tooltip: React.FC<TooltipProps> = ({
                     {children}
                 </TT.Trigger>
                 <TT.Portal>
-                <TT.Content className="text-forestGreen py-1 px-2 rounded-se-md rounded-bl-md" sideOffset={5}>
+                <TT.Content className="text-forestGreen" sideOffset={5}>
                     {content}
                     {/* <TT.Arrow className="" color='#97B34B' /> */}
                 </TT.Content>

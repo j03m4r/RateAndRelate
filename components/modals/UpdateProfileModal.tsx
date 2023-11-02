@@ -116,8 +116,8 @@ const UpdateProfileModal = () => {
                 </div>
                 <div className="flex flex-col gap-y-1 items-start justify-center w-full">
                     <div className="text-lg text-forestGreen">Edit profile picture (optional)</div>
-                    <div className="w-full relative flex flex-col border border-forestGreen hover:bg-forestGreen justify-center items-center
-                    cursor-pointer duration-300 hover:rounded-se-xl hover:rounded-bl-xl py-5 md:py-20 text-forestGreen hover:text-white">
+                    <div className="w-full relative flex flex-col border border-orange hover:bg-orange justify-center items-center
+                    cursor-pointer duration-300 hover:rounded-se-xl hover:rounded-bl-xl py-5 md:py-20 text-orange hover:text-white">
                         <CgProfile size={30} />
                         <Input type="file" accept="image/*" className="cursor-pointer opacity-0 absolute inset-0" 
                         {...register('image', { required: false })}/>

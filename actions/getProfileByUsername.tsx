@@ -16,7 +16,7 @@ const getProfileByUsername = async (username: string): Promise<Profile|null> => 
     if (!session) { return null }
 
     const { data, error } = await supabase.from('profiles')
-    .select('*, ratings(*, profiles(username, avatar_url), replying_to:replying_to_rating_id(profiles(username)))').eq('username', username);
+    .select('*, ratings(*, profiles(id, username, avatar_url), replying_to:replying_to_rating_id(profiles(username)))').eq('username', username);
 
     if (error) {
         console.log(error);

@@ -28,6 +28,11 @@ export interface ReplyRating extends Rating {
     replying_to?: string;
 };
 
+export interface LikedRating {
+    rating_id: number;
+    profile_id: string;
+};
+
 export interface Notification {
     id: number;
     type: number;

@@ -5,7 +5,7 @@ import useRateModal from "@/hooks/useRateModal";
 import { Rating } from "@/types";
 import RatingBox from "@/components/general/RatingBox";
 import MainFeed from "@/components/general/MainFeed";
-import RateDayButton from "@/components/general/RateDayButton";
+import RateDayButton from "@/components/buttons/RateDayButton";
 
 interface HomePageProps {
     currentRating: Rating | null;

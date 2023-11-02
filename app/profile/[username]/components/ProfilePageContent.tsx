@@ -3,7 +3,7 @@
 import { FollowInstance, Profile, Rating } from "@/types";
 
 import ProfileHeader from "./ProfileHeader";
-import RatingCalendar from "./RatingCalendar";
+import RatingCalendar from "@/components/general/RatingCalendar";
 import ProfileRatingFeed from "./ProfileRatingFeed";
 
 interface ProfilePageProps {

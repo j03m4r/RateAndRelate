@@ -53,12 +53,12 @@ const Sidebar: React.FC<SidebarProps> = ({
                         ))}
                     </div>
                     <div className="flex flex-col justify-center h-full w-1/4">
-                        <div className="flex items-end border-b border-charcoal h-1/4">
-                            <div className='border-l border-charcoal w-full h-full' />
+                        <div className="flex items-end border-b border-forestGreen h-1/4">
+                            <div className='border-l border-forestGreen w-full h-full' />
                         </div>
-                        <div className="border-l border-b border-charcoal h-1/4" />
+                        <div className="border-l border-b border-forestGreen h-1/4" />
                         <div className="flex items-start h-1/4">
-                            <div className='border-l border-charcoal w-full h-full' />
+                            <div className='border-l border-forestGreen w-full h-full' />
                         </div>
                     </div>
                 </div>

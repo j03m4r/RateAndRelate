@@ -23,7 +23,7 @@ const RatingItem: React.FC<RatingItemProps> = ({
     const avatar_url = useLoadAvatar(rating.profiles.avatar_url || '');
 
     return (
-        <div className="relative flex flex-col w-full h-fit">
+        <div className="group relative flex flex-col w-full h-fit" id={rating.id.toString()} style={{ scrollMargin: '80px' }}>
             <div onClick={ratingOnClick} className={twMerge(`select-none flex flex-col justify-center items-center w-full px-20 py-5 gap-y-5 text-forestGreen
             rounded-se-xl rounded-bl-xl cursor-pointer border border-forestGreen shadow-md hover:shadow-lg duration-200 transition ease-in-out`, 
             n===0 ? 'h-[36vh] min-h-[36vh]' : 'h-[26vh] min-h-[26vh]', showReplies&&'h-fit')}>
@@ -69,6 +69,10 @@ const RatingItem: React.FC<RatingItemProps> = ({
                     </Link>
                 </div>
             ) : null}
+            <div className="absolute top-3 right-3 font-extralight text-sm select-none opacity-0 group-hover:opacity-100 transition
+            duration-300 ease-in-out">
+                {new Date(rating.created_at).toDateString()}
+            </div>
         </div>
     );
 }

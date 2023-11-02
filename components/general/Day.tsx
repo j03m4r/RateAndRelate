@@ -1,6 +1,7 @@
 import Tooltip from "@/components/general/Tooltip";
 import { useUser } from "@/hooks/useUser";
 import { calculatePreviousDate } from "@/libs/DateCalculations";
+import { RatingLimited } from "@/types";
 import { useSessionContext } from "@supabase/auth-helpers-react";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
@@ -22,7 +23,7 @@ const Day: React.FC<DayProps> = ({
 
     const { supabaseClient } = useSessionContext();
     const { user } = useUser();
-    const [rating, setRating] = useState(-1);
+    const [rating, setRating] = useState<RatingLimited|null>();
 
     let rowStart = "row-start-1";
     if (dayNum===0) {
@@ -32,26 +33,37 @@ const Day: React.FC<DayProps> = ({
     useEffect(() => {
         const fetchData = async () => {
             const { data, error } = await supabaseClient.from('ratings')
-            .select('rating, user_id').eq('user_id', user_id)
+            .select('id, rating, created_at').eq('user_id', user_id)
             .gte('created_at', prevDay.toISOString()).lte('created_at', date.toISOString())
             .is('replying_to_rating_id', null);
 
             if (!error && data) {
                 if (data[0]===undefined) return;
-                setRating(data[0].rating);
+                setRating(data[0] as RatingLimited);
             } else {
-                setRating(-1);
+                setRating(null);
             }
         };
 
         fetchData();
-    }, [, supabaseClient, user?.id]);
+    }, [supabaseClient, user?.id]);
+
+    const scrollIntoTheView = (id: string) => {
+        let element = document.getElementById(id) as HTMLElement;
+        if (!element) return;
+    
+        element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+            inline: "center",
+        });
+    };
 
     return (
         <Tooltip content={prevDay.toDateString()}>
-            <div className={twMerge(`w-4 h-4 md:w-3 md:h-3 cu rounded-sm group`, 
-            dayNum===0 ? rowStart : null, rating===-1 ? 'hover:border hover:border-yellow' : rating>=7 ? 
-            'bg-spotifygreen cursor-pointer' : rating>=4 ? 'bg-okayday cursor-pointer' : 'bg-error cursor-pointer')}>
+            <div onClick={rating ? () => scrollIntoTheView(rating.id.toString()) : () => {}} className={twMerge(`w-4 h-4 md:w-3 md:h-3 cu rounded-sm group`, 
+            dayNum===0 ? rowStart : null, !rating ? 'hover:border hover:border-forestGreen' : rating.rating>=7 ? 
+            'bg-spotifygreen cursor-pointer' : rating.rating>=4 ? 'bg-okayday cursor-pointer' : 'bg-error cursor-pointer')}>
             </div>
         </Tooltip>
     );

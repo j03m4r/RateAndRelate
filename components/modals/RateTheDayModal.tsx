@@ -128,15 +128,16 @@ const RateTheDayModal = () => {
                 <div className="flex flex-col justify-center items-center w-full h-full gap-y-5">
                     {/* Rating # */}
                     <div className="flex justify-center items-center">
-                        <div className="text-9xl">{rating}</div>
+                        <div className={twMerge(`text-9xl`, rating>=7 ? 'text-spotifygreen cursor-pointer' : 
+                        rating>=4 ? 'text-okayday cursor-pointer' : 'text-error cursor-pointer')}>{rating}</div>
                     </div>
                     {/* Increment/Decrement buttons */}
-                    <div className="flex justify-around items-center w-1/4 h-auto text-primary">
-                        <Button className="border border-primary p-2 rounded-full" onClick={onDecrement}
+                    <div className="flex justify-around items-center w-1/4 h-auto text-forestGreen">
+                        <Button className="border border-forestGreen p-2 rounded-full" onClick={onDecrement}
                         disabled={rating<1}>
                             <MdKeyboardArrowLeft size={30} />
                         </Button>
-                        <Button className="border border-primary p-2 rounded-full" onClick={onIncrement}
+                        <Button className="border border-forestGreen p-2 rounded-full" onClick={onIncrement}
                         disabled={rating>9}>
                             <MdKeyboardArrowRight size={30} />
                         </Button>
@@ -144,9 +145,9 @@ const RateTheDayModal = () => {
                 </div>
                 {/* FOOTER */}
                 <div className="flex flex-col items-center justify-center w-full h-auto gap-y-5">
-                    <hr className="text-primary w-full" />
-                    <div className="flex justify-end items-center w-full h-auto text-primary">
-                        <Button className="border border-primary p-2 rounded-full" onClick={() => setPage((prev) => prev+1)}>
+                    <hr className="text-forestGreen w-full" />
+                    <div className="flex justify-end items-center w-full h-auto text-forestGreen">
+                        <Button className="border border-forestGreen p-2 rounded-full" onClick={() => setPage((prev) => prev+1)}>
                             <MdKeyboardArrowRight size={30} />
                         </Button>
                     </div>
@@ -162,33 +163,33 @@ const RateTheDayModal = () => {
                     {/* MESSAGE OF THE DAY */}
                     <textarea id="message" {...register('message', { required: false })} value={message || ""} 
                     placeholder="Message of the day..." disabled={isLoading} rows={5} className="w-full 
-                    resize-none rounded-se-xl rounded-bl-xl border border-primary p-4 focus:outline-none placeholder:text-grey"/>
+                    resize-none rounded-se-xl rounded-bl-xl border border-forestGreen p-4 focus:outline-none placeholder:text-grey"/>
                     <div className="flex justify-between w-full pl-2">
                         <div className="flex items-start flex-row gap-x-1">
                             <input type="checkbox" id="isPublic" {...register('isPublic')} checked={isPublic} onChange={onCheckChange} disabled={isLoading}
                             className="mt-[6px] cursor-pointer" />
-                            <div className="flex flex-col justify-center items-start text-primary">
+                            <div className="flex flex-col justify-center items-start text-forestGreen">
                                 <label htmlFor="isPublic">Public</label>
                                 <div className="text-xs font-extralight">Make this rating public on the explore page</div>
                             </div>
                         </div>
                         <div className={twMerge(`font-extralight`, message.length>200 ? 
-                        'text-error' : 'text-primary')}>
+                        'text-error' : 'text-forestGreen')}>
                             {message.length}/200
                         </div>
                     </div>
                 </div>
                 {/* FOOTER */}
                 <div className="flex flex-col items-center justify-center w-full h-auto gap-y-5">
-                    <hr className="text-primary w-full" />
-                    <div className="flex justify-between items-center w-full h-auto text-primary">
-                        <Button className="border border-primary p-2 rounded-full" onClick={() => setPage((prev) => prev-1)}>
+                    <hr className="text-forestGreen w-full" />
+                    <div className="flex justify-between items-center w-full h-auto text-forestGreen">
+                        <Button className="border border-forestGreen p-2 rounded-full" onClick={() => setPage((prev) => prev-1)}>
                             <MdKeyboardArrowLeft size={30} />
                         </Button>
                         <Button onClick={handleSubmit(onSubmit)} disabled={isLoading || message.length >= 200} 
-                        className={twMerge(`text-xl px-4 py-2 border-primary border text-white bg-primary duration-200`, 
-                        isLoading || message.length >= 280 ? 'hover:bg-primary hover:rounded-none' : 
-                        'hover:bg-opacity-0 hover:rounded-se-xl hover:rounded-bl-xl hover:text-primary')}>
+                        className={twMerge(`text-xl px-4 py-2 border-forestGreen border text-white bg-forestGreen duration-200`, 
+                        isLoading || message.length >= 280 ? 'hover:bg-forestGreen hover:rounded-none' : 
+                        'hover:bg-opacity-0 hover:rounded-se-xl hover:rounded-bl-xl hover:text-forestGreen')}>
                             Rate!
                         </Button>
                     </div>
