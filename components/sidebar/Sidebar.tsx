@@ -32,7 +32,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         },
         {
             label: 'PROFILE',
-            href: profile ? `/profile/${profile.username}` : '/', // dynamic route
+            href: profile ? `/profile/${profile.id}` : '/', // dynamic route
             selected: pathname === `/profile/${profile?.id}`,
         }
     ], [pathname, profile]);
