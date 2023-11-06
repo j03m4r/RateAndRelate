@@ -41,7 +41,7 @@ export interface LikedRating {
 export interface Notification {
     id: number;
     type: number;
-    to_profile: Profile;
+    to_profile_id: string;
     from_profile: Profile;
     created_at: string;
 };

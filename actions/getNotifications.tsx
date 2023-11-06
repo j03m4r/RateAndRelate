@@ -15,8 +15,8 @@ const getNotificationsByUser = async (): Promise<Notification[]> => {
 
     if (!session) { return [] }
 
-    const { data, error } = await supabase.from('notifications').select('id, type, to_profile:to_profile_id(*), from_profile:from_profile_id(*), created_at')
-    .eq('to_profile.id', session.user.id).filter('to_profile', 'not.is', null);
+    const { data, error } = await supabase.from('notifications').select('id, type, to_profile_id, from_profile:from_profile_id(*), created_at')
+    .eq('to_profile_id', session.user.id)
 
     if (error) {
         console.log(error);

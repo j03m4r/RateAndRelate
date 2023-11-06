@@ -47,7 +47,7 @@ const FollowRequestNotification: React.FC<FollowRequestNotificationProps> = ({
         setIsLoading(true);
 
         try {
-            const target_profile_id = notification.to_profile.id;
+            const target_profile_id = notification.to_profile_id;
             const follower_profile_id = notification.from_profile.id;
 
             const { error } = await supabaseClient.from('followers').insert({
