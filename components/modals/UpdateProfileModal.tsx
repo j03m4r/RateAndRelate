@@ -101,7 +101,7 @@ const UpdateProfileModal = () => {
                 }
             }
 
-            router.push('home');
+            router.refresh();
             setIsLoading(false);
             reset();
             onClose();
