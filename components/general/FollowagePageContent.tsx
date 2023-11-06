@@ -5,6 +5,7 @@ import FollowageProfileItem from "./FollowageProfileItem";
 import { useEffect } from "react";
 import { useUser } from "@/hooks/useUser";
 import useSetupProfileModal from "@/hooks/useSetupProfileModal";
+import { useRouter } from "next/navigation";
 
 interface FollowagePageContentProps {
     followage: FollowInstance[];
@@ -16,10 +17,15 @@ const FollowagePageContent: React.FC<FollowagePageContentProps> = ({
 }) => {
     const { profile } = useUser();
     const setupProfileModal = useSetupProfileModal();
+    const router = useRouter();
 
     useEffect(() => {
         if (!profile) return;
         if (!profile.username) setupProfileModal.onOpen();
+        else {
+            setupProfileModal.onClose();
+            router.refresh();
+        }
     }, [setupProfileModal.isOpen,profile]);
 
     return (

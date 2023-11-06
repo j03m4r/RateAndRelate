@@ -8,6 +8,7 @@ import ProfileRatingFeed from "./ProfileRatingFeed";
 import { useUser } from "@/hooks/useUser";
 import useSetupProfileModal from "@/hooks/useSetupProfileModal";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 interface ProfilePageProps {
     profile: Profile;
@@ -21,11 +22,16 @@ const ProfilePageContent: React.FC<ProfilePageProps> = ({
 }) => {
     const { profile: _profile } = useUser();
     const setupProfileModal = useSetupProfileModal();
+    const router = useRouter();
 
     useEffect(() => {
-        if (!_profile) return;
-        if (!_profile.username) setupProfileModal.onOpen();
-    }, [setupProfileModal.isOpen,_profile]);
+        if (!profile) return;
+        if (!profile.username) setupProfileModal.onOpen();
+        else {
+            setupProfileModal.onClose();
+            router.refresh();
+        }
+    }, [setupProfileModal.isOpen,profile]);
 
     return (
         <div className="flex flex-col gap-y-10 pt-24 pb-10 md:pb-16 md:px-16 text-forestGreen"> {/* Main container: contains header container & ratings container */}

@@ -106,7 +106,6 @@ const SetupProfileModal = () => {
                 }
             }
 
-            router.push('home');
             setIsLoading(false);
             reset();
             onChange(false);

@@ -9,6 +9,7 @@ import { twMerge } from "tailwind-merge";
 import AverageRatingCalendar from "@/components/general/AverageRatingCalender";
 import { useUser } from "@/hooks/useUser";
 import useSetupProfileModal from "@/hooks/useSetupProfileModal";
+import { useRouter } from "next/navigation";
 
 interface HomePageProps {
     currentRating: Rating | null;
@@ -29,10 +30,15 @@ const HomePageContent: React.FC<HomePageProps> = ({
     const [statPage, setStatPage] = useState(StatPages.TODAY);
     const { user, profile } = useUser();
     const setupProfileModal = useSetupProfileModal();
+    const router = useRouter();
 
     useEffect(() => {
         if (!profile) return;
         if (!profile.username) setupProfileModal.onOpen();
+        else {
+            setupProfileModal.onClose();
+            router.refresh();
+        }
     }, [setupProfileModal.isOpen,profile]);
 
     useEffect(() => {
