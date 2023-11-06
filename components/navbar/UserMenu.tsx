@@ -16,6 +16,7 @@ import { Notification } from '@/types';
 import FollowRequestNotification from '../general/FollowRequestNotification';
 import SearchUsers from './SearchUsers';
 import CommentNotification from '../general/CommentNotification';
+import { motion } from 'framer-motion';
 
 export const revalidate = 0;
 
@@ -104,7 +105,6 @@ const UserMenu: React.FC<UserMenuProps> = ({
                         No notifications!
                     </div>
                 )}
-                
             </div>
         );
     } else {
@@ -135,10 +135,10 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 </div>
             ) : null}
             {userModal.isOpen && (
-                <div className='absolute w-[60vw] md:w-[30vw] lg:w-[26vw] xl:w-[19vw] border border-forestGreen 
-                bg-cream overflow-hidden right-0 top-12 text-sm'>
+                <motion.div layout className="absolute w-[60vw] md:w-[30vw] lg:w-[26vw] xl:w-[19vw] border border-forestGreen 
+                bg-cream overflow-hidden right-0 top-12 text-sm duration-300 transition ease-in-out">
                     {content}
-                </div>
+                </motion.div>
             )}
         </div>
     );

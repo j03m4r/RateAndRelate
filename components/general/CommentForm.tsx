@@ -60,7 +60,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
     };
 
     const sendNotification = async () => {
-        if (!user) {
+        if (!user || user.id===profileId) {
             return;
         }
 

@@ -55,8 +55,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 </div>
                 <div className="text-4xl font-semibold text-yellow">{profile.username}</div>
                 <div className="select-none flex flex-row justify-center items-center w-full gap-x-5 text-yellow font-light text-md cursor-pointer">
-                    <Link href={`/followers/${profile.username}`} className="hover:underline">{followerCount} Followers</Link>
-                    <Link href={`/following/${profile.username}`} className="hover:underline">{followingCount} Following</Link>
+                    <Link href={`/followers/${profile.username}`} className="hover:underline hover:text-orange">{followerCount} Followers</Link>
+                    <Link href={`/following/${profile.username}`} className="hover:underline hover:text-orange">{followingCount} Following</Link>
                 </div>
             </div>
             <div className="flex flex-col-reverse md:flex-row justify-evenly items-center w-2/3 h-full gap-x-10"> {/* Daily stats larger container */}
@@ -64,7 +64,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 rounded-se-xl rounded-bl-xl"> {/* Your rating today container */}
                     {currentRating ? (
                         <> {/* Your rating of today */}
-                            <div className="text-yellow text-md font-light text-center">Today</div>
+                            <div className="text-yellow text-md font-light text-center">TODAY</div>
                             <div className={twMerge(`select-none text-7xl md:text-8xl lg:text-9xl font-bold`, currentRating.rating>=7 ? 'text-spotifygreen' 
                             : currentRating.rating>=4 ? 'text-okayday' : 'text-error')}> 
                                 {currentRating.rating}
@@ -74,8 +74,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                         <RateDayButton />
                     ) : (
                         <> {/* Your rating of today */}
-                            <div className="text-yellow text-md font-light text-center">Today</div>
-                            <div className={twMerge(`select-none text-6xl md:text-7xl lg:text-8xl font-bold text-error`)}> 
+                            <div className="text-yellow text-md font-light text-center">TODAY</div>
+                            <div className={twMerge(`select-none text-7xl md:text-8xl lg:text-9xl font-bold text-error`)}> 
                                 0
                             </div>
                         </>
@@ -83,7 +83,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 </div>
                 <div className="select-none flex flex-col justify-center items-center w-full md:w-1/2 h-[36vh]
                 rounded-se-xl rounded-bl-xl"> {/* Your rating today container */}
-                    <div className="text-yellow text-md font-light text-center">Average</div>
+                    <div className="text-yellow text-md font-light text-center">AVERAGE</div>
                     <div className={twMerge(`select-none text-7xl md:text-8xl lg:text-9xl font-bold`, averageRating>=7 ? 'text-spotifygreen' 
                     : averageRating>=4 ? 'text-okayday' : 'text-error')}> 
                         {averageRating.toFixed(1)} {/* Right now average rating is calculated using ALL ratings. Maybe it should only be 

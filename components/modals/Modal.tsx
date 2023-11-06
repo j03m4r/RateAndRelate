@@ -47,7 +47,7 @@ const Modal: React.FC<ModalProps> = ({
                             <Dialog.Description className='mb-5 text-md leading-normal text-center text-forestGreen' >
                                 {description}
                             </Dialog.Description>
-                            <div className='flex h-5/6'>
+                            <div className='flex flex-col h-5/6 justify-center'>
                                 {children}
                             </div>
                             <Dialog.Close asChild>

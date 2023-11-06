@@ -109,7 +109,7 @@ const AuthModal = () => {
         pageTitle = "Welcome back";
         pageDescription = "Login to your account";
         content = (
-            <div className="flex flex-col w-full h-full gap-y-5">
+            <div className="flex flex-col justify-center w-full h-fit gap-y-5">
                 <div className="flex flex-col justify-center w-full h-full gap-y-5">
                     {/* EMAIL & PASSWORD LOGIN */}
                     <div className="flex flex-col items-center w-full h-full justify-between gap-y-5">

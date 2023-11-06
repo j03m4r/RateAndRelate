@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Container from "../general/Container";
 import UserMenu from "./UserMenu";
 import { Notification } from "@/types";
@@ -13,6 +13,9 @@ const Navbar: React.FC<NavbarProps> = ({
     notifications
 }) => {
     const router = useRouter();
+    const pathname = usePathname();
+
+    if (pathname==='/') return;
     return (
         <div className="fixed w-full z-10 py-5">
             <Container>

@@ -1,14 +1,11 @@
 'use client';
 
 import { Rating, ReplyRating } from "@/types";
-import Avatar from "./Avatar";
-import useLoadAvatar from "@/hooks/useLoadAvatar";
-import { twMerge } from "tailwind-merge";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSessionContext } from "@supabase/auth-helpers-react";
 import RatingItem from "./RatingItem";
 import CommentForm from "./CommentForm";
+import { motion } from "framer-motion"
 
 interface RatingCardProps {
     rating: Rating;
@@ -77,9 +74,12 @@ const RatingCard: React.FC<RatingCardProps> = ({
                                 <div>
                                     <RatingCard rating={replies[0]} n={n+1} />
                                 </div>
-                                {showReplies && replies.slice(1).map((replyRating) => (
-                                    <RatingCard key={replyRating.id} rating={replyRating} n={n+1} />
-                                ))}
+                                <motion.div layout className="flex flex-col gap-y-12">
+                                    {showReplies && replies.slice(1).map((replyRating) => (
+                                        <RatingCard key={replyRating.id} rating={replyRating} n={n+1} />
+                                    ))}
+                                </motion.div>
+                                
                             </div>
                         </div>
                     </div>

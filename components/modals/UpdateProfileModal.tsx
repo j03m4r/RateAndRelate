@@ -2,7 +2,7 @@
 
 import useUpdateProfileModal from "@/hooks/useUpdateProfileModal";
 import Modal from "./Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/navigation";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -18,6 +18,7 @@ const UpdateProfileModal = () => {
     const { user } = useUser();
 
     const [isLoading, setIsLoading] = useState(false);
+    const [imageName, setImageName] = useState(null);
 
     const supabaseClient = useSupabaseClient();
     const router = useRouter();
@@ -41,6 +42,12 @@ const UpdateProfileModal = () => {
     });
 
     const username = watch('username');
+    const image = watch('image');
+
+    useEffect(() => {
+        if (!image) return;
+        setImageName(image[0].name)
+    }, [image]);
 
     const onSubmit: SubmitHandler<FieldValues> = async (values) => {
         try {
@@ -121,6 +128,7 @@ const UpdateProfileModal = () => {
                         <CgProfile size={30} />
                         <Input type="file" accept="image/*" className="cursor-pointer opacity-0 absolute inset-0" 
                         {...register('image', { required: false })}/>
+                        <div className="absolute bottom-2 left-3">{imageName}</div>
                     </div>
                 </div>
                 <Button className="w-full text-xl px-8 py-4 border-primary border border-orange bg-orange hover:bg-white hover:text-orange

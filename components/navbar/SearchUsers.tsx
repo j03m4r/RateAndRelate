@@ -40,7 +40,7 @@ const SearchUsers = () => {
             onChange={(e) => setValue(e.target.value)} />
             <div className="flex flex-col overflow-y-scroll">
                 {profiles.map((profile) => (
-                    <ProfileSearchItem profile={profile} />
+                    <ProfileSearchItem key={profile.id} profile={profile} />
                 ))}
             </div>
         </div>
