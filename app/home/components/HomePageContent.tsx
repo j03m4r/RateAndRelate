@@ -68,7 +68,7 @@ const HomePageContent: React.FC<HomePageProps> = ({
                     <RatingBox header="COMMUNITY" rating={Number(communityRating.toFixed(1))}/> {/* Your community's rating of today */}
                 </div>
                 <div className={twMerge(`absolute -right-full transition duration-700 flex flex-col 
-                justify-evenly w-full h-fit gap-y-10 text-white ease-in-out px-10 md:px-16`, 
+                justify-evenly w-full h-fit gap-y-5 text-white ease-in-out px-10 md:px-16`, 
                 statPage===StatPages.YEAR ? '-translate-x-full duration-1000' : null)}>
                     <div className="text-6xl lg:text-7xl font-bold text-forestGreen self-end select-none">THIS YEAR</div>
                     <AverageRatingCalendar mode='home' user_id={user ? user.id : ''} />
