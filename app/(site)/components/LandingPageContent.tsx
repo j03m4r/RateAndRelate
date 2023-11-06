@@ -53,7 +53,7 @@ const LandingPageContent = () => {
                 }} />
             </div>
             <div className="flex flex-col justify-center items-start h-[30vh] lg:col-span-2 border-b border-forestGreen text-8xl font-bold
-            gap-y-4 group transition ease-in-out overflow-x-scroll xl:overflow-y-hidden">
+            gap-y-4 group transition ease-in-out overflow-x-scroll xl:overflow-x-hidden overflow-y-hidden">
                 <div className="flex justify-start items-center pl-4 italic group-hover:translate-x-96 duration-1000">
                     {description1Arr.map((char, i) => (
                         <div key={i} onClick={authModal.onOpen} className={twMerge("hover:text-orange cursor-pointer", char===' '&&'ml-10')}>{char}</div>
