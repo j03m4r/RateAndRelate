@@ -19,13 +19,8 @@ const FollowagePageContent: React.FC<FollowagePageContentProps> = ({
 
     useEffect(() => {
         if (!profile) return;
-
-        var hasUsername = false;
-        if (profile.username!==null) hasUsername=true;
-
-        if (!hasUsername) setupProfileModal.onOpen();
-        else setupProfileModal.onClose();
-    }, [setupProfileModal.isOpen,]);
+        if (!profile.username) setupProfileModal.onOpen();
+    }, [setupProfileModal.isOpen,profile]);
 
     return (
         <div className="flex flex-col gap-y-2 pt-24 pb-10 md:pb-16 md:px-16">

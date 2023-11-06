@@ -32,13 +32,8 @@ const HomePageContent: React.FC<HomePageProps> = ({
 
     useEffect(() => {
         if (!profile) return;
-
-        var hasUsername = false;
-        if (profile.username!==null) hasUsername=true;
-
-        if (!hasUsername) setupProfileModal.onOpen();
-        else setupProfileModal.onClose();
-    }, [setupProfileModal.isOpen,]);
+        if (!profile.username) setupProfileModal.onOpen();
+    }, [setupProfileModal.isOpen,profile]);
 
     useEffect(() => {
         if (communityRatings.length) {

@@ -24,13 +24,8 @@ const ProfilePageContent: React.FC<ProfilePageProps> = ({
 
     useEffect(() => {
         if (!_profile) return;
-
-        var hasUsername = false;
-        if (_profile.username!==null) hasUsername=true;
-
-        if (!hasUsername) setupProfileModal.onOpen();
-        else setupProfileModal.onClose();
-    }, [setupProfileModal.isOpen,]);
+        if (!_profile.username) setupProfileModal.onOpen();
+    }, [setupProfileModal.isOpen,_profile]);
 
     return (
         <div className="flex flex-col gap-y-10 pt-24 pb-10 md:pb-16 md:px-16 text-forestGreen"> {/* Main container: contains header container & ratings container */}
