@@ -73,7 +73,7 @@ const SetupProfileModal = () => {
                 const {
                     data: imageData,
                     error: imageError
-                } = await supabaseClient.storage.from('images').upload(`avatar-${values.username}-${uniqueID}`, imageFile, {
+                } = await supabaseClient.storage.from('images').upload(`avatar-${user.id}-${uniqueID}`, imageFile, {
                     cacheControl: '3600',
                     upsert: false
                 });
@@ -102,6 +102,7 @@ const SetupProfileModal = () => {
                     setIsLoading(false);
                     return toast.error(supabaseError.message);
                 } else {
+                    router.push(`/profile/${user.id}`);
                     toast.success('Profile setup!');
                 }
             }
