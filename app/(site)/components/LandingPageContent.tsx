@@ -38,7 +38,7 @@ const LandingPageContent = () => {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full overflow-y-scroll overflow-x-hidden text-forestGreen">
             <div onClick={authModal.onOpen} className="h-[60vh] border-b border-r border-forestGreen flex justify-center items-center
-            text-2xl font-bold group cursor-pointer">
+            text-3xl font-bold group cursor-pointer">
                 {titleArr.map((item, i) => (
                     <div key={i} className={twMerge(`hover:text-orange duration-300 transition ease-in-out ${item.translate}`, 
                     item.char===' '&&'ml-1',)}>
@@ -70,7 +70,7 @@ const LandingPageContent = () => {
                 <AverageRatingCalendar mode='explore' user_id="0ed33360-6a3f-4a1c-aa00-e4beda478b63" />
             </div>
             <div onClick={authModal.onOpen} className="h-[60vh] border-b border-forestGreen flex justify-center items-center
-            text-2xl font-bold cursor-pointer group">
+            text-3xl font-bold cursor-pointer group">
                 {seeWhatsHappeningArr.map((item, i) => (
                     <div key={i} onClick={authModal.onOpen} className={twMerge(`group-hover:text-orange group-hover:scale-110 duration-300 transition ease-in-out ${item.translate}`, 
                     item.char===' '&&'ml-1',)}>
