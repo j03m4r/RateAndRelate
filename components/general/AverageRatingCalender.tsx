@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from "next/navigation";
-import AverageDay from "./AverageDay";
+import AverageDay from "./Day";
 import { twMerge } from "tailwind-merge";
 
 interface AverageRatingCalendarProps {
@@ -12,29 +12,24 @@ const AverageRatingCalendar: React.FC<AverageRatingCalendarProps> = ({ mode, use
     const days = Array(365).fill(0).map((_, i) => i);
     const pathname = usePathname();
     return (
-        <div className="select-none flex flex-col w-full h-fit gap-y-1">
-            <div className="flex justify-around w-full text-yellow overflow-x-scroll text-forestGreen">
-                <div>Jan</div>
-                <div>Feb</div>
-                <div>Mar</div>
-                <div>Apr</div>
-                <div>May</div>
-                <div>Jun</div>
-                <div>Jul</div>
-                <div>Aug</div>
-                <div>Sep</div>
-                <div>Oct</div>
-                <div>Nov</div>
-                <div>Dec</div>
-            </div>
-            <div className={twMerge(`grid grid-cols-53 grid-rows-7 grid-flow-col gap-x-6 gap-y-2 md:gap-x-4 md:gap-y-1 xl:gap-1 overflow-x-scroll`,
-            pathname==='/'&&'overflow-x-hidden')}>
-                {days.map((day) => (
-                    <AverageDay key={day} dayNum={day} mode={mode} user_id={user_id} />
-                ))}
-            </div>
+        <div className="select-none w-full h-fit text-forestGreen grid grid-cols-53 grid-rows-8 
+        grid-flow-row gap-x-6 gap-y-2 md:gap-x-4 md:gap-y-1 xl:gap-0 overflow-x-scroll">
+            <div className="flex justify-center items-center col-span-5 row-start-1 col-start-1">Jan</div>
+            <div className="flex justify-center items-center col-span-4 row-start-1">Feb</div>
+            <div className="flex justify-center items-center col-span-4 row-start-1">Mar</div>
+            <div className="flex justify-center items-center col-span-4 row-start-1">Apr</div>
+            <div className="flex justify-center items-center col-span-5 row-start-1">May</div>
+            <div className="flex justify-center items-center col-span-4 row-start-1">Jun</div>
+            <div className="flex justify-center items-center col-span-5 row-start-1">Jul</div>
+            <div className="flex justify-center items-center col-span-5 row-start-1">Aug</div>
+            <div className="flex justify-center items-center col-span-4 row-start-1">Sep</div>
+            <div className="flex justify-center items-center col-span-5 row-start-1">Oct</div>
+            <div className="flex justify-center items-center col-span-4 row-start-1">Nov</div>
+            <div className="flex justify-center items-center col-span-4 row-start-1">Dec</div>
+            {days.map((day) => (
+                <AverageDay key={day} dayNum={day} mode={mode} user_id={user_id} />
+            ))}
         </div>
-        
     );
 }
 

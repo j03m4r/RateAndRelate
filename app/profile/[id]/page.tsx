@@ -23,7 +23,6 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
     const followers = await getFollowersById(params.id);
     const following = await getFollowingById(params.id);
 
-    console.log(profile.ratings)
     return (
         <ProfilePageContent profile={profile} currentRating={currentRating} followers={followers} following={following} />
     );

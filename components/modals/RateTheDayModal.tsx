@@ -132,7 +132,7 @@ const RateTheDayModal = () => {
                         rating>=4 ? 'text-okayday cursor-pointer' : 'text-error cursor-pointer')}>{rating}</div>
                     </div>
                     {/* Increment/Decrement buttons */}
-                    <div className="flex justify-around items-center w-1/4 h-auto text-forestGreen">
+                    <div className="flex justify-around items-center w-1/4 h-auto text-forestGreen gap-x-4">
                         <Button className="border border-forestGreen p-2 rounded-full" onClick={onDecrement}
                         disabled={rating<1}>
                             <MdKeyboardArrowLeft size={30} />
