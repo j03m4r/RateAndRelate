@@ -123,15 +123,15 @@ const UpdateProfileModal = () => {
                 </div>
                 <div className="flex flex-col gap-y-1 items-start justify-center w-full">
                     <div className="text-lg text-forestGreen">Edit profile picture (optional)</div>
-                    <div className="w-full relative flex flex-col border border-orange hover:bg-orange justify-center items-center
-                    cursor-pointer duration-300 hover:rounded-se-xl hover:rounded-bl-xl py-5 md:py-20 text-orange hover:text-white">
+                    <div className="w-full relative flex flex-col border border-forestGreen hover:bg-forestGreen justify-center items-center
+                    cursor-pointer duration-300 hover:rounded-se-xl hover:rounded-bl-xl py-5 md:py-20 text-forestGreen hover:text-white">
                         <CgProfile size={30} />
                         <Input type="file" accept="image/*" className="cursor-pointer opacity-0 absolute inset-0" 
                         {...register('image', { required: false })}/>
                         <div className="absolute bottom-2 left-3">{imageName}</div>
                     </div>
                 </div>
-                <Button className="w-full text-xl px-8 py-4 border border-orange bg-orange hover:bg-white hover:text-orange
+                <Button className="w-full text-xl px-8 py-4 border border-forestGreen bg-forestGreen hover:bg-white hover:text-forestGreen
                 hover:rounded-se-xl hover:rounded-bl-xl text-white duration-300" onClick={handleSubmit(onSubmit)}>
                     Update Profile
                 </Button>

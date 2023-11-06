@@ -129,7 +129,7 @@ const AuthModal = () => {
                             placeholder="Enter a password" disabled={isLoading} className="border-forestGreen" />
                         </div>
                         {/* SUBMIT BUTTON */}
-                        <Button className="w-full text-xl px-8 py-4 border-orange border bg-orange hover:bg-white hover:text-orange
+                        <Button className="w-full text-xl px-8 py-4 border-forestGreen border bg-forestGreen hover:bg-white hover:text-forestGreen
                         hover:rounded-se-xl hover:rounded-bl-xl text-white duration-300" onClick={handleSubmit(onLogin)}>
                             Login
                         </Button>
@@ -137,11 +137,11 @@ const AuthModal = () => {
                     <hr className="text-forestGreen" />
                     {/* SOCIAL LOGIN */}
                     <div className="flex flex-row md:flex-col justify-center items-center w-full h-full gap-y-5 gap-x-5">
-                        <div onClick={handleGoogleLogin} className="flex justify-center items-center w-full lg:h-1/2 border border-orange hover:bg-orange
+                        <div onClick={handleGoogleLogin} className="flex justify-center items-center w-full lg:h-1/2 border border-forestGreen hover:bg-forestGreen
                         cursor-pointer duration-300 hover:rounded-se-xl hover:rounded-bl-xl py-5 md:py-4">
                             <FcGoogle size={30} />
                         </div>
-                        <div onClick={handleSpotifyLogin} className="flex justify-center items-center w-full lg:h-1/2 border border-orange hover:bg-orange
+                        <div onClick={handleSpotifyLogin} className="flex justify-center items-center w-full lg:h-1/2 border border-forestGreen hover:bg-forestGreen
                         cursor-pointer duration-300 text-spotifygreen hover:rounded-se-xl hover:rounded-bl-xl py-5 md:py-4">
                             <FaSpotify size={30} />
                         </div>
@@ -182,7 +182,7 @@ const AuthModal = () => {
                             placeholder="Enter a password" disabled={isLoading} className="border-forestGreen" />
                         </div>
                         {/* SUBMIT BUTTON */}
-                        <Button disabled={isLoading} className="w-full text-xl px-8 py-4 border-orange border bg-orange hover:bg-white hover:text-orange
+                        <Button disabled={isLoading} className="w-full text-xl px-8 py-4 border-forestGreen border bg-forestGreen hover:bg-white hover:text-forestGreen
                         hover:rounded-se-xl hover:rounded-bl-xl text-white duration-300" onClick={handleSubmit(onSignUp)}>
                             Sign up
                         </Button>
