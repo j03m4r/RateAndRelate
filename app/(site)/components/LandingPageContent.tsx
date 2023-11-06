@@ -22,11 +22,11 @@ const LandingPageContent = () => {
     {char:'E',translate:'group-hover:-translate-y-12'}];
     const description1Arr = "RATE THE DAY".split("");
     const description2Arr = "KEEP A DIGITAL JOURNAL".split("");
-    const seeWhatsHappeningArr: animChar[] = [{char:'S', translate:'group-hover:-translate-x-24'}, {char:'E', translate:'group-hover:-translate-x-20'}, {char:'E', translate:'group-hover:-translate-x-16'},
-    {char:' ',translate:'group-hover:-translate-x-14'}, {char:'W',translate:'group-hover:-translate-x-12'}, {char:'H',translate:'group-hover:-translate-x-10'}, {char:'A',translate:'group-hover:-translate-x-8'}, {char:'T',translate:'group-hover:-translate-x-6'}, 
-    {char:"'",translate:'group-hover:-translate-x-4'}, {char:'S',translate:'group-hover:-translate-x-2'}, {char:' ',translate:''}, {char:'H',translate:'group-hover:translate-x-2'}, 
-    {char:'A',translate:'group-hover:translate-x-4'}, {char:'P',translate:'group-hover:translate-x-6'}, {char:'P',translate:'group-hover:translate-x-8'}, {char:'E',translate:'group-hover:translate-x-10'}, {char:'P',translate:'group-hover:translate-x-12'},
-    {char:'N',translate:'group-hover:translate-x-14'}, {char:'I',translate:'group-hover:translate-x-16'}, {char:'N',translate:'group-hover:translate-x-20'}, {char:'G',translate:'group-hover:translate-x-24'}];
+    const seeWhatsHappeningArr: animChar[] = [{char:'S', translate:'group-hover:-translate-x-20'}, {char:'E', translate:'group-hover:-translate-x-16'}, {char:'E', translate:'group-hover:-translate-x-14'},
+    {char:' ',translate:'group-hover:-translate-x-12'}, {char:'W',translate:'group-hover:-translate-x-10'}, {char:'H',translate:'group-hover:-translate-x-8'}, {char:'A',translate:'group-hover:-translate-x-6'}, {char:'T',translate:'group-hover:-translate-x-4'}, 
+    {char:"'",translate:'group-hover:-translate-x-2'}, {char:'S',translate:''}, {char:' ',translate:''}, {char:'H',translate:'group-hover:translate-x-2'}, 
+    {char:'A',translate:'group-hover:translate-x-4'}, {char:'P',translate:'group-hover:translate-x-6'}, {char:'P',translate:'group-hover:translate-x-8'}, {char:'E',translate:'group-hover:translate-x-10'},
+    {char:'N',translate:'group-hover:translate-x-12'}, {char:'I',translate:'group-hover:translate-x-14'}, {char:'N',translate:'group-hover:translate-x-16'}, {char:'G',translate:'group-hover:translate-x-20'}];
 
     const { user } = useUser();
     const router = useRouter();

@@ -16,8 +16,8 @@ const getFollowersById = async (id: string): Promise<FollowInstance[]> => {
     if (!session) { return [] }
 
     const { data, error } = await supabase.from('followers')
-    .select('target_profile:target_profile_id(*), follower_profile:follower_profile_id(*)')
-    .eq('target_profile.id', id).filter('target_profile', "not.is", null);
+    .select('target_profile_id, follower_profile:follower_profile_id(*)')
+    .eq('target_profile_id', id);
 
     if (error) {
         console.log(error);
