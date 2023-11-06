@@ -16,7 +16,7 @@ const getProfileById = async (id: string): Promise<Profile|null> => {
     if (!session) { return null }
 
     const { data, error } = await supabase.from('profiles')
-    .select('*, ratings(*, profiles(id, username, avatar_url), replying_to:replying_to_rating_id(profiles(id)))').eq('id', id);
+    .select('*, ratings(*, profiles(id, username, avatar_url), replying_to:replying_to_rating_id(profiles(id, username)))').eq('id', id);
 
     if (error) {
         console.log(error);
@@ -33,7 +33,7 @@ const getProfileById = async (id: string): Promise<Profile|null> => {
         return {
             ...rating,
             // @ts-ignore
-            replying_to: rating.replying_to.profiles.username
+            replying_to: rating.replying_to.profiles
         }
     });
 

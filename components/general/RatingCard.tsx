@@ -33,6 +33,7 @@ const RatingCard: React.FC<RatingCardProps> = ({
                     replying_to: rating.replying_to.profiles
                 }
             })
+            console.log(metaData)
             // @ts-ignore
             setReplies(metaData);
         }
