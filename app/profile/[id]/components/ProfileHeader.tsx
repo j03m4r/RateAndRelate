@@ -84,7 +84,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                     <div className="text-yellow text-md font-light text-center">AVERAGE</div>
                     <div className={twMerge(`select-none text-7xl md:text-8xl lg:text-9xl font-bold`, averageRating>=7 ? 'text-spotifygreen' 
                     : averageRating>=4 ? 'text-okayday' : 'text-error')}> 
-                        {averageRating.toFixed(1)} {/* Right now average rating is calculated using ALL ratings. Maybe it should only be 
+                        {!Number.isNaN(averageRating) ? averageRating.toFixed(1) : 0} {/* Right now average rating is calculated using ALL ratings. Maybe it should only be 
                         daily ratings */}
                     </div>
                 </div>
