@@ -64,8 +64,8 @@ const RatingItem: React.FC<RatingItemProps> = ({
             </div>
             {rating.replying_to ? (
                 <div className="absolute -top-8 left-0 text-forestGreen">
-                    Replying to <Link href={`/profile/${rating.replying_to}`} className="font-semibold text-orange hover:underline">
-                        {rating.replying_to}
+                    Replying to <Link href={`/profile/${rating.replying_to.id}`} className="font-semibold text-orange hover:underline">
+                        {rating.replying_to.username}
                     </Link>
                 </div>
             ) : null}

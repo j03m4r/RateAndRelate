@@ -22,7 +22,7 @@ const RatingCard: React.FC<RatingCardProps> = ({
     const [isCommenting, setIsCommenting] = useState(false);
 
     const fetchData = async () => {
-        const { data, error } = await supabaseClient.from('ratings').select("id, profiles(*), rating, message, replying_to:replying_to_rating_id(profiles(id)), created_at")
+        const { data, error } = await supabaseClient.from('ratings').select("id, profiles(*), rating, message, replying_to:replying_to_rating_id(profiles(id, username)), created_at")
         .eq('replying_to_rating_id', rating.id).order('created_at', { ascending: false });
 
         if (!error && data && data.length!==0) {
@@ -30,7 +30,7 @@ const RatingCard: React.FC<RatingCardProps> = ({
                 return {
                     ...rating,
                     // @ts-ignore
-                    replying_to: rating.replying_to.profiles.username
+                    replying_to: rating.replying_to.profiles
                 }
             })
             // @ts-ignore

@@ -24,8 +24,13 @@ export interface Rating extends RatingLimited {
     isPublic: boolean;
 };
 
+export interface ReplyingTo {
+    id: string;
+    username: string;
+};
+
 export interface ReplyRating extends Rating {
-    replying_to?: string;
+    replying_to?: ReplyingTo;
 };
 
 export interface LikedRating {
