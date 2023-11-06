@@ -53,8 +53,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 </div>
                 <div className="text-4xl font-semibold text-yellow">{profile.username}</div>
                 <div className="select-none flex flex-row justify-center items-center w-full gap-x-5 text-yellow font-light text-md cursor-pointer">
-                    <Link href={`/followers/${profile.username}`} className="hover:underline hover:text-orange">{followerCount} Followers</Link>
-                    <Link href={`/following/${profile.username}`} className="hover:underline hover:text-orange">{followingCount} Following</Link>
+                    <Link href={`/followers/${profile.id}`} className="hover:underline hover:text-orange">{followerCount} Followers</Link>
+                    <Link href={`/following/${profile.id}`} className="hover:underline hover:text-orange">{followingCount} Following</Link>
                 </div>
             </div>
             <div className="flex flex-col-reverse md:flex-row justify-evenly items-center w-2/3 h-full gap-x-10"> {/* Daily stats larger container */}
