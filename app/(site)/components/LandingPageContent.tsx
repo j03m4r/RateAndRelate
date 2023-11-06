@@ -36,7 +36,7 @@ const LandingPageContent = () => {
     }, [user,router]);
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full overflow-scroll text-forestGreen">
+        <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full overflow-y-scroll overflow-x-hidden text-forestGreen">
             <div onClick={authModal.onOpen} className="h-[60vh] border-b border-r border-forestGreen flex justify-center items-center
             text-2xl font-bold group cursor-pointer">
                 {titleArr.map((item, i) => (
@@ -53,7 +53,7 @@ const LandingPageContent = () => {
                 }} />
             </div>
             <div className="flex flex-col justify-center items-start h-[30vh] lg:col-span-2 border-b border-forestGreen text-8xl font-bold
-            gap-y-4 group transition ease-in-out overflow-x-scroll overflow-y-hidden">
+            gap-y-4 group transition ease-in-out overflow-x-scroll xl:overflow-y-hidden">
                 <div className="flex justify-start items-center pl-4 italic group-hover:translate-x-96 duration-1000">
                     {description1Arr.map((char, i) => (
                         <div key={i} onClick={authModal.onOpen} className={twMerge("hover:text-orange cursor-pointer", char===' '&&'ml-10')}>{char}</div>
