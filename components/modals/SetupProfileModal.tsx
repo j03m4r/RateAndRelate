@@ -49,6 +49,10 @@ const SetupProfileModal = () => {
         setImageName(image[0].name)
     }, [image]);
 
+    useEffect(() => {
+        if (profile?.username) onChange(false);
+    }, [profile?.username]);
+
     const onSubmit: SubmitHandler<FieldValues> = async (values) => {
         if (profile?.username===null&&values.username==='') return toast.error('Must enter a username.');
         try {
@@ -105,7 +109,7 @@ const SetupProfileModal = () => {
             router.push('home');
             setIsLoading(false);
             reset();
-            onClose();
+            onChange(false);
         } catch (error) {
             toast.error('Something went wrong');
         } finally {

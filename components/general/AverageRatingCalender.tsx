@@ -1,7 +1,6 @@
 'use client';
-import { usePathname } from "next/navigation";
+
 import AverageDay from "./Day";
-import { twMerge } from "tailwind-merge";
 
 interface AverageRatingCalendarProps {
     mode: string;
@@ -10,7 +9,6 @@ interface AverageRatingCalendarProps {
 
 const AverageRatingCalendar: React.FC<AverageRatingCalendarProps> = ({ mode, user_id }) => {
     const days = Array(365).fill(0).map((_, i) => i);
-    const pathname = usePathname();
     return (
         <div className="select-none w-full h-fit text-forestGreen grid grid-cols-53 grid-rows-8 
         grid-flow-row gap-x-6 gap-y-2 md:gap-x-4 md:gap-y-1 xl:gap-0 overflow-x-scroll">
