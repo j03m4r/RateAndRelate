@@ -6,7 +6,7 @@ interface IParams {
     username: string;
 };
 
-const FollowingPage = async ({ params }: { params: IParams }) => {
+export default async function FollowingPage(params: IParams) {
     const profile = await getProfileByUsername(params.username);
 
     if (!profile) {
@@ -23,5 +23,3 @@ const FollowingPage = async ({ params }: { params: IParams }) => {
         <FollowagePageContent followage={following} isFollowers={false} />
     );
 };
-
-export default FollowingPage;

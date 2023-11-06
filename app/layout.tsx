@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   description: 'Connect with friends over how the day was',
 }
 
+// export const dynamic = 'force-dynamic'
+
 export default async function RootLayout({
   children,
 }: {

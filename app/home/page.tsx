@@ -2,7 +2,7 @@ import getCurrentRating from "@/actions/getCurrentRating";
 import HomePageContent from "./components/HomePageContent";
 import getCommunityRatings from "@/actions/getCommunityRatings";
 
-export const revalidate = 10;
+export const revalidate = 0;
 
 export default async function HomePage() {
   const communityRatings = await getCommunityRatings();
