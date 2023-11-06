@@ -1,23 +1,23 @@
-import getProfileByUsername from "@/actions/getProfileByUsername";
-import getFollowersByUsername from "@/actions/getFollowersByUsername";
 import FollowagePageContent from "@/components/general/FollowagePageContent";
+import getProfileById from "@/actions/getProfileById";
+import getFollowersById from "@/actions/getFollowersById";
 
 interface IParams {
-    username: string;
+    id: string;
 };
 
 const FollowersPage = async ({ params }: { params: IParams }) => {
-    const profile = await getProfileByUsername(params.username);
+    const profile = await getProfileById(params.id);
 
     if (!profile) {
         return (
             <div className="flex justify-center items-center w-full h-full text-xl font-bold text-yellow">
-                No profile with username &apos;{params.username}&apos;
+                No profile with id &apos;{params.id}&apos;
             </div>
         );
     }
 
-    const followers = await getFollowersByUsername(params.username);
+    const followers = await getFollowersById(params.id);
 
     return (
         <FollowagePageContent followage={followers} isFollowers={true} />

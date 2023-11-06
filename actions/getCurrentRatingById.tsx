@@ -4,7 +4,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 // import { cookies } from "next/dist/client/components/headers";
 import { cookies } from 'next/headers';
 
-const getCurrentRatingByUsername = async (username: string): Promise<Rating|null> => {
+const getCurrentRatingById = async (id: string): Promise<Rating|null> => {
     const supabase = createServerComponentClient({
         cookies: cookies
     });
@@ -21,7 +21,7 @@ const getCurrentRatingByUsername = async (username: string): Promise<Rating|null
     const prevDay = calculatePreviousDate(today);
 
     const { data, error } = await supabase.from('ratings')
-    .select('*, profiles!inner(id, username, avatar_url)').eq('profiles.username', username)
+    .select('*, profiles!inner(id, username, avatar_url)').eq('profiles.id', id)
     .gte('created_at', prevDay.toISOString()).lte('created_at', today.toISOString()).is('replying_to_rating_id', null);
 
     if (error) {
@@ -35,4 +35,4 @@ const getCurrentRatingByUsername = async (username: string): Promise<Rating|null
     return data[0] as Rating;
 };
 
-export default getCurrentRatingByUsername;
+export default getCurrentRatingById;

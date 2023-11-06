@@ -3,7 +3,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 // import { cookies } from "next/dist/client/components/headers";
 import { cookies } from 'next/headers';
 
-const getProfileByUsername = async (username: string): Promise<Profile|null> => {
+const getProfileById = async (id: string): Promise<Profile|null> => {
     const supabase = createServerComponentClient({
         cookies: cookies
     });
@@ -17,7 +17,7 @@ const getProfileByUsername = async (username: string): Promise<Profile|null> => 
     if (!session) { return null }
 
     const { data, error } = await supabase.from('profiles')
-    .select('*, ratings(*, profiles(id, username, avatar_url), replying_to:replying_to_rating_id(profiles(username)))').eq('username', username);
+    .select('*, ratings(*, profiles(id, username, avatar_url), replying_to:replying_to_rating_id(profiles(username)))').eq('id', id);
 
     if (error) {
         console.log(error);
@@ -41,4 +41,4 @@ const getProfileByUsername = async (username: string): Promise<Profile|null> => 
     return metaData;
 };
 
-export default getProfileByUsername;
+export default getProfileById;

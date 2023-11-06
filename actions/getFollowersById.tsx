@@ -3,7 +3,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 // import { cookies } from "next/dist/client/components/headers";
 import { cookies } from 'next/headers';
 
-const getFollowingByUsername = async (username: string): Promise<FollowInstance[]> => {
+const getFollowersById = async (id: string): Promise<FollowInstance[]> => {
     const supabase = createServerComponentClient({
         cookies: cookies
     });
@@ -18,7 +18,7 @@ const getFollowingByUsername = async (username: string): Promise<FollowInstance[
 
     const { data, error } = await supabase.from('followers')
     .select('target_profile:target_profile_id(*), follower_profile:follower_profile_id(*)')
-    .eq('follower_profile.username', username).filter('follower_profile', 'not.is', null);
+    .eq('target_profile.id', id).filter('target_profile', "not.is", null);
 
     if (error) {
         console.log(error);
@@ -32,4 +32,4 @@ const getFollowingByUsername = async (username: string): Promise<FollowInstance[
     return data;
 };
 
-export default getFollowingByUsername;
+export default getFollowersById;
