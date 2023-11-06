@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import AverageRatingCalendar from "@/components/general/AverageRatingCalender";
 import { useUser } from "@/hooks/useUser";
+import useSetupProfileModal from "@/hooks/useSetupProfileModal";
 
 interface ExplorePageProps {
     currentRating: Rating | null;
@@ -24,7 +25,18 @@ const ExplorePageContent: React.FC<ExplorePageProps> = ({
 }) => {
     const [publicRating, setPublicRating] = useState(0);
     const [statPage, setStatPage] = useState(StatPages.TODAY);
-    const { user } = useUser();
+    const { user, profile } = useUser();
+    const setupProfileModal = useSetupProfileModal();
+
+    useEffect(() => {
+        if (!profile) return;
+
+        var hasUsername = false;
+        if (profile.username!==null) hasUsername=true;
+
+        if (!hasUsername) setupProfileModal.onOpen();
+        else setupProfileModal.onClose();
+    }, [setupProfileModal.isOpen,]);
 
     useEffect(() => {
         if (publicRatings.length) {

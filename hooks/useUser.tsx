@@ -57,16 +57,6 @@ export const MyUserContextProvier = (props: Props) => {
         }
     }, [user, isLoadingUser]);
 
-    useEffect(() => {
-        if (!profile) return;
-
-        var hasUsername = false;
-        if (profile.username!==null) hasUsername=true;
-
-        if (!hasUsername) setupProfileModal.onOpen();
-        else setupProfileModal.onClose();
-    }, [setupProfileModal.isOpen,]);
-
     const value = {
         accessToken,
         user,

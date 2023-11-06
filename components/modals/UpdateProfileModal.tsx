@@ -131,7 +131,7 @@ const UpdateProfileModal = () => {
                         <div className="absolute bottom-2 left-3">{imageName}</div>
                     </div>
                 </div>
-                <Button className="w-full text-xl px-8 py-4 border-primary border border-orange bg-orange hover:bg-white hover:text-orange
+                <Button className="w-full text-xl px-8 py-4 border border-orange bg-orange hover:bg-white hover:text-orange
                 hover:rounded-se-xl hover:rounded-bl-xl text-white duration-300" onClick={handleSubmit(onSubmit)}>
                     Update Profile
                 </Button>

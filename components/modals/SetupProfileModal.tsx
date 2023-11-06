@@ -1,7 +1,7 @@
 'use client';
 
 import Modal from "./Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/navigation";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -18,6 +18,7 @@ const SetupProfileModal = () => {
     const { user, profile } = useUser();
 
     const [isLoading, setIsLoading] = useState(false);
+    const [imageName, setImageName] = useState(null);
 
     const supabaseClient = useSupabaseClient();
     const router = useRouter();
@@ -42,6 +43,11 @@ const SetupProfileModal = () => {
 
     const username = watch('username');
     const image = watch('image')
+
+    useEffect(() => {
+        if (!image) return;
+        setImageName(image[0].name)
+    }, [image]);
 
     const onSubmit: SubmitHandler<FieldValues> = async (values) => {
         if (profile?.username===null&&values.username==='') return toast.error('Must enter a username.');
@@ -112,23 +118,23 @@ const SetupProfileModal = () => {
         isOpen={isOpen}>
             <div className="flex flex-col w-full h-full justify-center items-center gap-y-5">
                 <div className="flex flex-col gap-y-1 items-start justify-center w-full">
-                    <div className="text-lg text-primary">Edit username *</div>
+                    <div className="text-lg text-forestGreen">Edit username *</div>
                     <Input id="username" {...register('username', { required: false })} value={username || ""} 
                     placeholder="Enter a new username" disabled={isLoading} />
                 </div>
                 <div className="flex flex-col gap-y-1 items-start justify-center w-full">
-                    <div className="text-lg text-primary">Edit profile picture (optional)</div>
-                    <div className="w-full relative flex flex-col border border-primary hover:bg-primary justify-center items-center
-                    cursor-pointer duration-200 hover:rounded-se-xl hover:rounded-bl-xl py-5 md:py-20 text-primary hover:text-white">
+                <div className="text-lg text-forestGreen">Edit profile picture (optional)</div>
+                    <div className="w-full relative flex flex-col border border-orange hover:bg-orange justify-center items-center
+                    cursor-pointer duration-300 hover:rounded-se-xl hover:rounded-bl-xl py-5 md:py-20 text-orange hover:text-white">
                         <CgProfile size={30} />
-                        <div className="mt-1">{image?.[0].name || '(Optional)'}</div>
                         <Input type="file" accept="image/*" className="cursor-pointer opacity-0 absolute inset-0" 
                         {...register('image', { required: false })}/>
+                        <div className="absolute bottom-2 left-3">{imageName}</div>
                     </div>
                 </div>
-                <Button className="w-full text-xl px-8 py-4 border-primary border bg-primary hover:bg-white hover:text-primary
-                hover:rounded-se-xl hover:rounded-bl-xl text-white duration-200" onClick={handleSubmit(onSubmit)}>
-                    Finish Setup
+                <Button className="w-full text-xl px-8 py-4 border border-orange bg-orange hover:bg-white hover:text-orange
+                hover:rounded-se-xl hover:rounded-bl-xl text-white duration-300" onClick={handleSubmit(onSubmit)}>
+                    Setup Profile
                 </Button>
             </div>
         </Modal>
