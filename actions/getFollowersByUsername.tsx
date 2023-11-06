@@ -1,6 +1,7 @@
 import { FollowInstance } from "@/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/dist/client/components/headers";
+// import { cookies } from "next/dist/client/components/headers";
+import { cookies } from 'next/headers';
 
 const getFollowersByUsername = async (username: string): Promise<FollowInstance[]> => {
     const supabase = createServerComponentClient({

@@ -1,6 +1,7 @@
 import { Notification } from "@/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/dist/client/components/headers";
+// import { cookies } from "next/dist/client/components/headers";
+import { cookies } from 'next/headers';
 
 const getNotificationsByUser = async (): Promise<Notification[]> => {
     const supabase = createServerComponentClient({

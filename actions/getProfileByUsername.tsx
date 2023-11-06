@@ -1,6 +1,7 @@
 import { Profile } from "@/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/dist/client/components/headers";
+// import { cookies } from "next/dist/client/components/headers";
+import { cookies } from 'next/headers';
 
 const getProfileByUsername = async (username: string): Promise<Profile|null> => {
     const supabase = createServerComponentClient({
