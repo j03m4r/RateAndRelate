@@ -51,7 +51,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
             setUserMenuState(UserMenuState.NAVIGATION);
             userModal.onOpen();
         }
-    }, [userModal.isOpen]);
+    }, [userModal.isOpen, userModal]);
 
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut();

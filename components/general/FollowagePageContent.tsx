@@ -14,7 +14,7 @@ const FollowagePageContent: React.FC<FollowagePageContentProps> = ({
     return (
         <div className="flex flex-col gap-y-2 pt-24 pb-10 md:pb-16 md:px-16">
             <div className="text-4xl font-semibold text-forestGreen">{followage.length} {isFollowers ? "Followers" : "Following"}</div>
-            {followage.map((followInstance) => {
+            {followage.map((followInstance, i) => {
                 let followageProfile: Profile;
                 if (isFollowers) {
                     followageProfile = followInstance.follower_profile;
@@ -22,7 +22,7 @@ const FollowagePageContent: React.FC<FollowagePageContentProps> = ({
                     followageProfile = followInstance.target_profile;
                 }
 
-                return <FollowageProfileItem profile={followageProfile} />
+                return <FollowageProfileItem key={i} profile={followageProfile} />
             })}
         </div>
     );

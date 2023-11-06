@@ -8,8 +8,6 @@ import { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 
 import ratingImg from '@/public/images/rating.jpeg';
-import calendImg from '@/public/images/calendar.jpeg';
-import RatingCalendar from "@/components/general/RatingCalendar";
 import AverageRatingCalendar from "@/components/general/AverageRatingCalender";
 
 interface animChar {
@@ -36,7 +34,7 @@ const LandingPageContent = () => {
 
     useEffect(() => {
         if (user) router.push('/home')
-    }, [user,]);
+    }, [user,router]);
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full overflow-scroll text-forestGreen">

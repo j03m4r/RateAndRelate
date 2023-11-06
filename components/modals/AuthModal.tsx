@@ -147,7 +147,7 @@ const AuthModal = () => {
                 {/* FOOTER */}
                 <div className="flex items-center justify-center">
                     <div onClick={() => setPage(PAGE.SIGNUP)} className="hover:underline cursor-pointer text-grey text-sm w-fit text-forestGreen">
-                        Don't have an account? Sign up here.
+                        Don&apos;t have an account? Sign up here.
                     </div>
                 </div>
             </div>

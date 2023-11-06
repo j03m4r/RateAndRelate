@@ -14,7 +14,7 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
     if (!profile) {
         return (
             <div className="flex justify-center items-center w-full h-full text-xl font-bold text-yellow">
-                No profile with username '{params.username}'
+                No profile with username &apos;{params.username}&apos;
             </div>
         );
     }

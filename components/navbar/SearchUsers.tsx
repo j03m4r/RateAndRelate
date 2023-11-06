@@ -32,7 +32,7 @@ const SearchUsers = () => {
         };
 
         fetchData();
-    }, [debounecedValue]);
+    }, [debounecedValue,supabaseClient]);
 
     return (
         <div className="flex flex-col max-h-[30vh] lg:max-h-[20vh] p-2">
