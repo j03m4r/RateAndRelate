@@ -71,13 +71,13 @@ const UserMenu: React.FC<UserMenuProps> = ({
             <div className='select-none flex flex-col cursor-pointer'>
                 <>
                 <div className="lg:hidden">
-                    <MenuItem onClick={() => { toggleOpen(), router.push('/home') }} label='Home'/>
-                    <MenuItem onClick={() => { toggleOpen(), router.push('/explore') }} label='Explore'/>
+                    <MenuItem onClick={() => { toggleOpen(), router.push('/home') }} label='HOME'/>
+                    <MenuItem onClick={() => { toggleOpen(), router.push('/explore') }} label='EXPLORE'/>
                 </div>
-                <MenuItem onClick={() => { toggleOpen(), router.push(`/profile/${profile?.id}`) }} label='Profile'/>
-                <MenuItem onClick={() => { toggleOpen(), updateProfileModal.onOpen() }} label='Update Profile'/>
-                <hr className='text-lime' />
-                <MenuItem onClick={handleLogout} label='Logout'/>
+                <MenuItem onClick={() => { toggleOpen(), router.push(`/profile/${profile?.id}`) }} label='PROFILE'/>
+                <MenuItem onClick={() => { toggleOpen(), updateProfileModal.onOpen() }} label='UPDATE PROFILE'/>
+                <hr className='text-forestGreen' />
+                <MenuItem onClick={handleLogout} label='LOGOUT'/>
                 </>
             </div>
         );

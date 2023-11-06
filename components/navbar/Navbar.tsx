@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({
                             justify-between
                         ">
                             <div className="select-none text-4xl text-orange hover:cursor-pointer w-fit"
-                            onClick={() => router.push("/home")}>Rate & Relate</div>
+                            onClick={() => router.push("/home")}>RATE & RELATE</div>
                             <UserMenu notifications={notifications} />
                     </div>
             </Container>
