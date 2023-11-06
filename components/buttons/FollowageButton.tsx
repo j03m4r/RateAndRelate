@@ -34,9 +34,8 @@ const FollowageButton: React.FC<FollowageButtonProps> = ({
         }
 
         const fetchData = async () => {
-            const { data, error } = await supabaseClient.from('followers').select('target_profile:target_profile_id(*), follower_profile:follower_profile_id(*)')
-            .eq('follower_profile.id', user.id).eq('target_profile.id', targetProfileId).filter('follower_profile', 'not.is', null)
-            .filter('target_profile', 'not.is', null);
+            const { data, error } = await supabaseClient.from('followers').select('target_profile_id, follower_profile_id')
+            .eq('follower_profile_id', user.id).eq('target_profile_id', targetProfileId);
 
             if (!error && data && data.length!==0) {
                 setFollowState(FollowState.FOLLOWING);
