@@ -75,7 +75,7 @@ const FollowRequestNotification: React.FC<FollowRequestNotificationProps> = ({
                 <Avatar src={avatar_url} />
                 <div className="flex flex-col justify-center items-start">
                     <div className="text-orange text-md">Follow Request</div>
-                    <Link href={`/profile/${notification.from_profile.username}`} className="cursor-pointer transition hover:underline">{notification.from_profile.username}</Link>
+                    <Link href={`/profile/${notification.from_profile.id}`} className="cursor-pointer transition hover:underline">{notification.from_profile.username}</Link>
                 </div>
             </div>
             <div className="flex flex-row gap-x-2">

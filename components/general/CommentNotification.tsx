@@ -46,7 +46,7 @@ const CommentNotification: React.FC<CommentNotificationProps> = ({
             <div className="flex flex-row items-center justify-center gap-x-2">
                 <Avatar src={avatar_url} />
                 <div className="flex justify-center items-center gap-x-1">
-                    <Link href={`/profile/${notification.from_profile.username}`} className="cursor-pointer transition text-orange font-semibold hover:underline">
+                    <Link href={`/profile/${notification.from_profile.id}`} className="cursor-pointer transition text-orange font-semibold hover:underline">
                     {notification.from_profile.username}
                     </Link>
                     <div>rated your rating</div>

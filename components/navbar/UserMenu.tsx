@@ -74,7 +74,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                     <MenuItem onClick={() => { toggleOpen(), router.push('/home') }} label='Home'/>
                     <MenuItem onClick={() => { toggleOpen(), router.push('/explore') }} label='Explore'/>
                 </div>
-                <MenuItem onClick={() => { toggleOpen(), router.push(`/profile/${profile?.username}`) }} label='Profile'/>
+                <MenuItem onClick={() => { toggleOpen(), router.push(`/profile/${profile?.id}`) }} label='Profile'/>
                 <MenuItem onClick={() => { toggleOpen(), updateProfileModal.onOpen() }} label='Update Profile'/>
                 <hr className='text-lime' />
                 <MenuItem onClick={handleLogout} label='Logout'/>

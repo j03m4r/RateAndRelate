@@ -38,7 +38,7 @@ const RatingItem: React.FC<RatingItemProps> = ({
                         <div className="block md:hidden">
                             <Avatar size={1} src={avatar_url} />
                         </div>
-                        <Link href={`/profile/${rating.profiles.username}`} className={twMerge(`h-[2rem] lg:h-[3rem] font-semibold truncate 
+                        <Link href={`/profile/${rating.profiles.id}`} className={twMerge(`h-[2rem] lg:h-[3rem] font-semibold truncate 
                         hover:underline transition`, n===0 ? 'text-xl md:text-2xl lg:text-4xl' : 'text-xl md:text-2xl lg:text-3xl')}>
                             {rating.profiles.username}
                         </Link>
