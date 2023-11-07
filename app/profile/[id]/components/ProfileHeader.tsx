@@ -51,8 +51,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                         <FollowageButton targetProfileId={profile.id} />
                     </div>
                 </div>
-                <div className="text-4xl font-semibold text-yellow">{profile.username}</div>
-                <div className="select-none flex flex-row justify-center items-center w-full gap-x-5 text-yellow font-light text-md cursor-pointer">
+                <div className="text-5xl font-semibold text-yellow">{profile.username}</div>
+                <div className="select-none flex flex-row justify-center items-center w-full gap-x-5 text-yellow font-light text-lg cursor-pointer">
                     <Link href={`/followers/${profile.id}`} className="hover:underline hover:text-orange">{followerCount} Followers</Link>
                     <Link href={`/following/${profile.id}`} className="hover:underline hover:text-orange">{followingCount} Following</Link>
                 </div>
@@ -63,7 +63,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                     {currentRating ? (
                         <> {/* Your rating of today */}
                             <div className="text-yellow text-md font-light text-center">TODAY</div>
-                            <div className={twMerge(`select-none text-7xl md:text-8xl lg:text-9xl font-bold`, currentRating.rating>=7 ? 'text-spotifygreen' 
+                            <div className={twMerge(`select-none text-8xl lg:text-9xl font-bold`, currentRating.rating>=7 ? 'text-spotifygreen' 
                             : currentRating.rating>=4 ? 'text-okayday' : 'text-error')}> 
                                 {currentRating.rating}
                             </div>
@@ -82,7 +82,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 <div className="select-none flex flex-col justify-center items-center w-full md:w-1/2 h-[36vh]
                 rounded-se-xl rounded-bl-xl"> {/* Your rating today container */}
                     <div className="text-yellow text-md font-light text-center">AVERAGE</div>
-                    <div className={twMerge(`select-none text-7xl md:text-8xl lg:text-9xl font-bold`, averageRating>=7 ? 'text-spotifygreen' 
+                    <div className={twMerge(`select-none text-8xl lg:text-9xl font-bold`, averageRating>=7 ? 'text-spotifygreen' 
                     : averageRating>=4 ? 'text-okayday' : 'text-error')}> 
                         {!Number.isNaN(averageRating) ? averageRating.toFixed(1) : "-"} {/* Right now average rating is calculated using ALL ratings. Maybe it should only be 
                         daily ratings */}
