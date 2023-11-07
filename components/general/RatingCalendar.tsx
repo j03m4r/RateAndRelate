@@ -8,7 +8,7 @@ const RatingCalendar: React.FC<RatingCalendarProps> = ({ user_id }) => {
     const days = Array(365).fill(0).map((_, i) => i);
     return (
         <div className="select-none w-full h-fit text-forestGreen grid grid-cols-53 grid-rows-8 
-        grid-flow-row gap-x-6 gap-y-2 md:gap-x-4 md:gap-y-1 xl:gap-0 overflow-x-scroll">
+        grid-flow-row gap-x-6 gap-y-2 md:gap-x-4 md:gap-y-1 xl:gap-0 overflow-x-scroll xl:overflow-x-hidden">
             <div className="flex justify-center items-center col-span-5 row-start-1 col-start-1">Jan</div>
             <div className="flex justify-center items-center col-span-4 row-start-1">Feb</div>
             <div className="flex justify-center items-center col-span-4 row-start-1">Mar</div>
