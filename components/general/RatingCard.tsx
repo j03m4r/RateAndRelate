@@ -74,12 +74,13 @@ const RatingCard: React.FC<RatingCardProps> = ({
                                 <div>
                                     <RatingCard rating={replies[0]} n={n+1} />
                                 </div>
-                                <motion.div layout className="flex flex-col gap-y-12">
-                                    {showReplies && replies.slice(1).map((replyRating) => (
-                                        <RatingCard key={replyRating.id} rating={replyRating} n={n+1} />
-                                    ))}
-                                </motion.div>
-                                
+                                {showReplies&&(
+                                    <motion.div layout className="flex flex-col gap-y-12">
+                                        {replies.slice(1).map((replyRating) => (
+                                            <RatingCard key={replyRating.id} rating={replyRating} n={n+1} />
+                                        ))}
+                                    </motion.div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -137,7 +138,6 @@ const RatingCard: React.FC<RatingCardProps> = ({
                 ) : null
             )}
         </div>
-        
     );
 };
 
