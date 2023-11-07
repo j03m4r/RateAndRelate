@@ -1,1 +1,1 @@
-# [https://www.raterelate.com/]
+# [raterelate.com](https://www.raterelate.com/)
