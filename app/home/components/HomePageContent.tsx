@@ -42,7 +42,7 @@ const HomePageContent: React.FC<HomePageProps> = ({
         <div className="flex flex-col h-full items-center pt-24 gap-y-10 text-forestGreen overflow-x-hidden"> {/* MAIN CONTAINER OF RIGHT CONTENT */}
             <div className="relative flex justify-center items-center w-full">
                 <div className={twMerge(`transition duration-700 flex flex-col-reverse md:flex-row 
-                justify-evenly w-full h-fit gap-x-10 md:gap-x-16 gap-y-10 px-10 md:px-16 text-white ease-in-out`, 
+                justify-evenly w-full h-fit gap-x-10 md:gap-x-16 gap-y-10 md:px-16 text-white ease-in-out`, 
                 statPage===StatPages.YEAR ? '-translate-y-[150%]' : 'duration-1000')}> {/* Daily stats larger container */}
                         {currentRating ? (
                             <RatingBox header="YOU" rating={currentRating.rating} />
@@ -54,7 +54,7 @@ const HomePageContent: React.FC<HomePageProps> = ({
                     <RatingBox header="COMMUNITY" rating={Number(communityRating.toFixed(1))}/> {/* Your community's rating of today */}
                 </div>
                 <div className={twMerge(`absolute -right-full transition duration-700 flex flex-col 
-                justify-evenly w-full h-fit gap-y-5 text-white ease-in-out px-10 md:px-16`, 
+                justify-evenly w-full h-fit gap-y-5 text-white ease-in-out md:px-16`, 
                 statPage===StatPages.YEAR ? '-translate-x-full duration-1000' : null)}>
                     <div className="text-6xl lg:text-7xl font-bold text-forestGreen self-end select-none">THIS YEAR</div>
                     <AverageRatingCalendar mode='home' user_id={user ? user.id : ''} />
