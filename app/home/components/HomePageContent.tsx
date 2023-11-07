@@ -22,7 +22,7 @@ enum StatPages {
 const HomePageContent: React.FC<HomePageProps> = ({
     currentRating, communityRatings
 }) => {
-    const [communityRating, setCommunityRating] = useState(0);
+    const [communityRating, setCommunityRating] = useState(-1);
     const [statPage, setStatPage] = useState(StatPages.TODAY);
     const { user } = useUser();
 

@@ -14,7 +14,7 @@ const RatingBox: React.FC<RatingBoxProps> = ({
             <div className="text-yellow text-md font-light">{header}</div>
             <div className={twMerge(`text-7xl lg:text-9xl font-bold`, rating>=7 ? 'text-spotifygreen' 
             : rating>=4 ? 'text-okayday' : 'text-error')}>
-                {rating}
+                {rating!==-1 ? rating : "-"}
             </div>
         </div>
     );

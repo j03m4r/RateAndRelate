@@ -22,7 +22,7 @@ enum StatPages {
 const ExplorePageContent: React.FC<ExplorePageProps> = ({
     publicRatings, currentRating
 }) => {
-    const [publicRating, setPublicRating] = useState(0);
+    const [publicRating, setPublicRating] = useState(-1);
     const [statPage, setStatPage] = useState(StatPages.TODAY);
     const { user } = useUser();
 
