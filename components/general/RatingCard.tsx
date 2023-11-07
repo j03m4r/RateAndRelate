@@ -56,7 +56,7 @@ const RatingCard: React.FC<RatingCardProps> = ({
                         <div className="flex flex-col justify-start h-[18vh] w-1/6">
                             <div className="h-[7.2vh] w-2/3 md:w-[55%] border-r border-lime">
                             </div>
-                            <div className="flex flex-row w-full h-3/5 lg:h-3/5">
+                            <div className="flex flex-row w-full h-2/5 md:h-1/4 lg:h-3/5">
                                 <div className="w-2/3 md:w-[55%] h-full border border-lime rounded-b-full rounded-tl-full">
                                 </div>
                                 <div className="w-1/3 md:w-[45%] h-full border-t border-lime">
