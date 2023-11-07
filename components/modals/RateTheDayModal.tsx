@@ -122,7 +122,7 @@ const RateTheDayModal = () => {
     let pageTitle = "";
     if (page===PAGE.RATING) {
         pageTitle = "How was your day?";
-        pageDescription = "Rate one to ten";
+        pageDescription = "Rate zero to ten";
         content = (
             <div className="flex flex-col justify-between items-center w-full h-full lg:h-[45vh] gap-y-5">
                 <div className="flex flex-col justify-center items-center w-full h-full gap-y-5">

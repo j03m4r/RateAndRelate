@@ -36,7 +36,7 @@ const LandingPageContent = () => {
     }, [user,router]);
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full overflow-y-scroll overflow-x-hidden text-forestGreen">
+        <div className="select-none grid grid-cols-1 lg:grid-cols-2 w-full h-full overflow-y-scroll overflow-x-hidden text-forestGreen">
             <div onClick={authModal.onOpen} className="h-[60vh] border-b border-r border-forestGreen flex justify-center items-center
             text-3xl font-bold group cursor-pointer">
                 {titleArr.map((item, i) => (
