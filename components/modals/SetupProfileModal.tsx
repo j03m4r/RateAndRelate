@@ -102,8 +102,7 @@ const SetupProfileModal = () => {
                     setIsLoading(false);
                     return toast.error(supabaseError.message);
                 } else {
-                    router.refresh();
-                    router.push(`/profile/${user.id}`);
+                    // router.push(`/profile/${user.id}`);
                     toast.success('Profile setup!');
                 }
             }

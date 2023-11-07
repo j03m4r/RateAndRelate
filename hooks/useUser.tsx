@@ -32,7 +32,6 @@ export const MyUserContextProvier = (props: Props) => {
     const [profile, setProfile] = useState<Profile | null>(null);
     const pathname = usePathname();
     const setupProfileModal = useSetupProfileModal();
-    const supabaseClient = useSupabaseClient();
 
     const getProfile = () => supabase.from('profiles').select('*').eq('id', user?.id).single();
 
@@ -46,11 +45,17 @@ export const MyUserContextProvier = (props: Props) => {
 
                     if (userDetailsPromise.status === "fulfilled") {
                         setProfile(userDetailsPromise.value.data as Profile);
+                        if (userDetailsPromise.value.data.username!==null) {
+                            setupProfileModal.onClose();
+                        } else {
+                            setupProfileModal.onOpen();
+                        }
                     }
 
                     setIsLoadingData(false);
                 }
             );
+            if (pathname==='/') redirect(`profile/${user.id}`);
         } else if (!user && !isLoadingUser && !isLoadingData) {
             setProfile(null);
             if (pathname!=="/") redirect('/');

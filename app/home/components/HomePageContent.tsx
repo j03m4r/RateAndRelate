@@ -8,15 +8,11 @@ import RateDayButton from "@/components/buttons/RateDayButton";
 import { twMerge } from "tailwind-merge";
 import AverageRatingCalendar from "@/components/general/AverageRatingCalender";
 import { useUser } from "@/hooks/useUser";
-import useSetupProfileModal from "@/hooks/useSetupProfileModal";
-import { useRouter } from "next/navigation";
 
 interface HomePageProps {
     currentRating: Rating | null;
     communityRatings: Rating[];
 };
-
-export const revalidate = 0;
 
 enum StatPages {
     TODAY = 1,
@@ -28,18 +24,7 @@ const HomePageContent: React.FC<HomePageProps> = ({
 }) => {
     const [communityRating, setCommunityRating] = useState(0);
     const [statPage, setStatPage] = useState(StatPages.TODAY);
-    const { user, profile } = useUser();
-    const setupProfileModal = useSetupProfileModal();
-    const router = useRouter();
-
-    useEffect(() => {
-        if (!profile) return;
-        if (!profile.username) setupProfileModal.onOpen();
-        else {
-            setupProfileModal.onClose();
-            router.refresh();
-        }
-    }, [setupProfileModal.isOpen,profile]);
+    const { user } = useUser();
 
     useEffect(() => {
         if (communityRatings.length) {
