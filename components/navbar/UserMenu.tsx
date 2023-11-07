@@ -13,10 +13,10 @@ import { BsBell, BsSearch } from 'react-icons/bs';
 import { twMerge } from 'tailwind-merge';
 import useUserModal from '@/hooks/useUserModal';
 import { Notification } from '@/types';
-import FollowRequestNotification from '../general/FollowRequestNotification';
 import SearchUsers from './SearchUsers';
 import CommentNotification from '../general/CommentNotification';
 import { motion } from 'framer-motion';
+import FollowNotification from '../general/FollowNotification';
 
 export const revalidate = 0;
 
@@ -89,7 +89,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                         let notificationContent = (<div></div>);
     
                         if (notification.type===1) {
-                            notificationContent = <FollowRequestNotification notification={notification} />
+                            notificationContent = <FollowNotification notification={notification} />
                         } else if (notification.type===2) {
                             notificationContent = <CommentNotification notification={notification} />
                         }

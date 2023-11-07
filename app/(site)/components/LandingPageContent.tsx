@@ -47,7 +47,7 @@ const LandingPageContent = () => {
                 ))}
             </div>
             <div className="relative h-[60vh] overflow-hidden border-b border-forestGreen">
-                <div className="absolute w-full h-full lg:-left-10 lg:-bottom-20 bg-contain lg:bg-cover" style={{ 
+                <div className="absolute w-full h-full lg:-left-10 lg:-bottom-20 bg-contain lg:bg-cover 2xl:bg-contain" style={{ 
                     backgroundImage: `url(${ratingImg.src})`,
                     backgroundPosition: 'center',
                 }} />
@@ -65,7 +65,7 @@ const LandingPageContent = () => {
                     ))}
                 </div>
             </div>
-            <div className="flex flex-col justify-center items-center h-[60vh] border-b border-r border-forestGreen">
+            <div className="flex flex-col justify-center items-center h-[60vh] border-b border-r border-forestGreen gap-y-5">
                 <div className="text-6xl lg:text-7xl font-bold text-forestGreen self-end mr-4 select-none">THIS YEAR</div>
                 <AverageRatingCalendar mode='explore' user_id="0ed33360-6a3f-4a1c-aa00-e4beda478b63" />
             </div>

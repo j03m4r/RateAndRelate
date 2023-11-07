@@ -3,7 +3,7 @@ import { useSessionContext } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { BsFillPersonPlusFill, BsFillPersonDashFill, BsClockHistory } from "react-icons/bs";
+import { BsFillPersonPlusFill, BsFillPersonDashFill } from "react-icons/bs";
 import { twMerge } from "tailwind-merge";
 
 interface FollowageButtonProps {
@@ -13,7 +13,6 @@ interface FollowageButtonProps {
 enum FollowState {
     UNDEFINED = 0,
     FOLLOWING = 1,
-    REQUESTED = 2,
     UNFOLLOWED = 3
 };
 
@@ -40,14 +39,7 @@ const FollowageButton: React.FC<FollowageButtonProps> = ({
             if (!error && data && data.length!==0) {
                 setFollowState(FollowState.FOLLOWING);
             } else {
-                const { data, error } = await supabaseClient.from('notifications').select('*')
-                .eq('from_profile_id', user.id).eq('to_profile_id', targetProfileId).eq('type', 1);
-
-                if (!error && data && data.length!==0) {
-                    setFollowState(FollowState.REQUESTED);
-                } else {
-                    setFollowState(FollowState.UNFOLLOWED);
-                }
+                setFollowState(FollowState.UNFOLLOWED);
             }
         };
 
@@ -62,8 +54,7 @@ const FollowageButton: React.FC<FollowageButtonProps> = ({
         }
     }, [user]);
 
-    const Icon = followState===FollowState.FOLLOWING ? BsFillPersonDashFill : (followState===FollowState.UNFOLLOWED ? BsFillPersonPlusFill : BsClockHistory);
-    // const toolTipContent = followState===FollowState.FOLLOWING ? "Unfollow" : (followState===FollowState.UNFOLLOWED ? "Follow" : "Cancel Request");
+    const Icon = followState===FollowState.FOLLOWING ? BsFillPersonDashFill : BsFillPersonPlusFill;
 
     const handleClick = async () => {
         if (!user) {
@@ -80,25 +71,28 @@ const FollowageButton: React.FC<FollowageButtonProps> = ({
                 toast.success("Unfollowed");
                 setFollowState(FollowState.UNFOLLOWED);
             }
-        } else if (followState===FollowState.REQUESTED) {
-            const { error } = await supabaseClient.from('notifications').delete()
-            .eq('to_profile_id', targetProfileId).eq('from_profile_id', user.id).eq("type", 1);
-
-            if (error) {
-                toast.error(error.message);
-            } else {
-                toast.success("Follow Request Cancelled")
-                setFollowState(FollowState.UNFOLLOWED);
-            }
         } else {
-            const { error } = await supabaseClient.from('notifications')
-            .insert({type: 1, to_profile_id: targetProfileId, from_profile_id: user.id});
+            const { error } = await supabaseClient.from('followers').insert({
+                target_profile_id: targetProfileId,
+                follower_profile_id: user.id
+            });
 
             if (error) {
                 toast.error(error.message);
             } else {
-                toast.success('Follow request sent!');
-                setFollowState(FollowState.REQUESTED);
+                toast.success('Following +1!');
+                setFollowState(FollowState.FOLLOWING);
+
+                const { data, error } = await supabaseClient.from('notifications').select('id')
+                .eq('to_profile_id', targetProfileId).eq('from_profile_id', user.id).eq('type', 1);
+
+                if (!data?.length) {
+                    const { error } = await supabaseClient.from('notifications').insert({
+                        type: 1,
+                        to_profile_id: targetProfileId,
+                        from_profile_id: user.id
+                    });
+                }
             }
         }
 
@@ -106,12 +100,10 @@ const FollowageButton: React.FC<FollowageButtonProps> = ({
     };
     
     return (
-        // <Tooltip content={toolTipContent}>
-            <div onClick={handleClick} className={twMerge(`select-none flex justify-center items-center p-6 rounded-full bg-forestGreen text-cream
-            cursor-pointer transition hover:scale-105`, isOwnProfile||followState===FollowState.UNDEFINED ? 'hidden' : 'block')}>
-                <Icon size={35} />
-            </div>
-        // </Tooltip>
+        <div onClick={handleClick} className={twMerge(`select-none flex justify-center items-center p-6 rounded-full bg-forestGreen text-cream
+        cursor-pointer transition hover:scale-105`, isOwnProfile||followState===FollowState.UNDEFINED ? 'hidden' : 'block')}>
+            <Icon size={35} />
+        </div>
     );
 }
 
