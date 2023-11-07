@@ -46,7 +46,7 @@ const Day: React.FC<AverageDayProps> = ({
     const thisYear = new Date(new Date().getFullYear(), 0).getTime();
     const date = new Date(thisYear+(_dayNum*24*60*60*1000));
     date.setDate(date.getDate()+1);
-    date.setHours(16);
+    date.setHours(5);
     date.setMinutes(59);
     const prevDay = calculatePreviousDate(date);
 
