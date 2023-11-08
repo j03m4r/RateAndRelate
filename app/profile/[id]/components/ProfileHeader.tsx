@@ -73,7 +73,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                     ) : (
                         <> {/* Your rating of today */}
                             <div className="text-yellow text-md font-light text-center">TODAY</div>
-                            <div className={twMerge(`select-none text-4xl font-bold text-forstGreen text-center`)}> 
+                            <div className={twMerge(`select-none text-5xl font-bold text-forstGreen text-center`)}> 
                                 NONE &#40;YET&#41;
                             </div>
                         </>
