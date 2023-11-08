@@ -24,7 +24,7 @@ const RatingItem: React.FC<RatingItemProps> = ({
 
     return (
         <div className="group relative flex flex-col w-full h-fit" id={rating.id.toString()} style={{ scrollMargin: '80px' }}>
-            <div onClick={ratingOnClick} className={twMerge(`select-none flex flex-col justify-center items-center w-full px-4 md:px-20 py-5 gap-y-5 text-forestGreen
+            <div onClick={ratingOnClick} className={twMerge(`select-none flex flex-col justify-center items-center w-full px-10 md:px-20 py-5 gap-y-5 text-forestGreen
             rounded-se-xl rounded-bl-xl cursor-pointer border border-forestGreen shadow-md hover:shadow-lg duration-200 transition ease-in-out`, 
             n===0 ? 'h-[36vh] min-h-[36vh]' : 'h-[26vh] min-h-[26vh]', showReplies&&'h-fit')}>
                 <div className="flex justify-around items-center w-full h-fit gap-x-10 gap-y-5 lg:gap-y-0">
