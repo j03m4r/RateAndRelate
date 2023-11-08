@@ -39,7 +39,7 @@ const Modal: React.FC<ModalProps> = ({
                         leaveTo="opacity-0 scale-95"
                     >
                         <Dialog.Content className='translate duration-300 fixed drop-shadow-md border-0 top-[50%] left-[50%] 
-                        w-full lg:w-4/6 xl:w-1/2 h-full lg:h-fit translate-x-[-50%] translate-y-[-50%]
+                        w-full lg:w-4/6 xl:w-1/2 2xl:w-1/3 h-full lg:h-fit translate-x-[-50%] translate-y-[-50%]
                         rounded-se-xl rounded-bl-xl bg-white p-6 focus:outline-none z-30'>
                             <Dialog.Title className='text-3xl text-center font-bold mb-2 text-forestGreen'>
                                 {title}
