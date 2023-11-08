@@ -135,7 +135,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 </div>
             ) : null}
             {userModal.isOpen && (
-                <motion.div layout className="absolute w-[60vw] md:w-[30vw] lg:w-[26vw] xl:w-[19vw] border border-forestGreen 
+                <motion.div layout className="absolute w-[60vw] md:w-[30vw] lg:w-[26vw] xl:w-[19vw] 2xl:w-[15vw] border border-forestGreen 
                 bg-cream overflow-hidden right-0 top-12 text-sm duration-300 transition ease-in-out">
                     {content}
                 </motion.div>

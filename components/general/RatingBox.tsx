@@ -13,8 +13,8 @@ const RatingBox: React.FC<RatingBoxProps> = ({
         rounded-se-xl rounded-bl-xl text-center text-forestGreen border border-forestGreen"> {/* Your community's rating of today */}
             <div className="text-yellow text-md font-light">{header}</div>
             <div className={twMerge(`text-7xl lg:text-9xl font-bold`, rating>=7 ? 'text-spotifygreen' 
-            : rating>=4 ? 'text-okayday' : 'text-error')}>
-                {rating!==-1 ? rating : "-"}
+            : rating>=4 ? 'text-okayday' : rating>=0 ? 'text-error' : 'text-forestGreen')}>
+                {rating!==-1 ? rating : "NONE"}
             </div>
         </div>
     );

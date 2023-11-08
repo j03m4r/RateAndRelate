@@ -73,8 +73,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                     ) : (
                         <> {/* Your rating of today */}
                             <div className="text-yellow text-md font-light text-center">TODAY</div>
-                            <div className={twMerge(`select-none text-7xl md:text-8xl lg:text-9xl font-bold text-error`)}> 
-                                -
+                            <div className={twMerge(`select-none text-7xl md:text-8xl lg:text-9xl font-bold text-forstGreen`)}> 
+                                NONE
                             </div>
                         </>
                     )}
@@ -83,8 +83,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 rounded-se-xl rounded-bl-xl"> {/* Your rating today container */}
                     <div className="text-yellow text-md font-light text-center">AVERAGE</div>
                     <div className={twMerge(`select-none text-8xl lg:text-9xl font-bold`, averageRating>=7 ? 'text-spotifygreen' 
-                    : averageRating>=4 ? 'text-okayday' : 'text-error')}> 
-                        {!Number.isNaN(averageRating) ? averageRating.toFixed(1) : "-"} {/* Right now average rating is calculated using ALL ratings. Maybe it should only be 
+                    : averageRating>=4 ? 'text-okayday' : averageRating>=0 ? 'text-error' : 'text-forestGreen')}> 
+                        {!Number.isNaN(averageRating) ? averageRating.toFixed(1) : "NONE"} {/* Right now average rating is calculated using ALL ratings. Maybe it should only be 
                         daily ratings */}
                     </div>
                 </div>
