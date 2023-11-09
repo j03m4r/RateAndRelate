@@ -28,12 +28,12 @@ const HomePageContent: React.FC<HomePageProps> = ({
 
     useEffect(() => {
         if (communityRatings.length) {
-            if (currentRating) {
+            if (currentRating&&currentRating.isPublic) {
                 setCommunityRating([...communityRatings, currentRating].reduce((sum, rating) => sum + rating.rating, 0) / (communityRatings.length+1));
             } else {
                 setCommunityRating(communityRatings.reduce((sum, rating) => sum + rating.rating, 0) / communityRatings.length);
             }
-        } else if (currentRating) {
+        } else if (currentRating&&currentRating.isPublic) {
             setCommunityRating(currentRating.rating);
         }
     }, [currentRating, communityRatings.length]);

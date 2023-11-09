@@ -17,10 +17,14 @@ const config: Config = {
       gridTemplateColumns: {
         // Simple 16 column grid
         '53': 'repeat(53, minmax(0, 1fr))',
+        '54': 'repeat(54, minmax(0, 1fr))',
       },
       gridColumnEnd: {
         '52': '52'
-      }
+      },
+      gridRowStart: {
+        '8': '8',
+      },
     },
     colors: {
       white: '#ffffff',
