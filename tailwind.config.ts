@@ -30,6 +30,7 @@ const config: Config = {
       white: '#ffffff',
       black: '#161616',
       cream: '#f7f1e0',
+      darkCream: '#ece2c5',
       charcoal: '#2c2c2e',
       orange: '#EE6D43',
       forestGreen: '#1E5F55',

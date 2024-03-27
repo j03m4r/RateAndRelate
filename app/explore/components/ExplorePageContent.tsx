@@ -6,7 +6,7 @@ import RateDayButton from "@/components/buttons/RateDayButton";
 import { Rating } from "@/types";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import AverageRatingCalendar from "@/components/general/AverageRatingCalender";
+import RatingCalendar from "@/components/general/RatingCalendar";
 import { useUser } from "@/hooks/useUser";
 
 interface ExplorePageProps {
@@ -57,7 +57,7 @@ const ExplorePageContent: React.FC<ExplorePageProps> = ({
                 justify-evenly w-full h-fit gap-y-5 text-white ease-in-out md:px-16`, 
                 statPage===StatPages.YEAR ? '-translate-x-full duration-1000' : null)}>
                     <div className="text-6xl lg:text-7xl font-bold text-forestGreen self-end select-none">THIS YEAR</div>
-                    <AverageRatingCalendar mode='explore' user_id={user ? user.id : ''} />
+                    <RatingCalendar mode='explore' user_id={user ? user.id : ''} />
                 </div>
             </div>
             <div className="flex flex-row gap-x-2 w-fit h-fit">
