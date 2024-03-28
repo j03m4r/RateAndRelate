@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 
 import ratingImg from '@/public/images/rating.jpeg';
-import AverageRatingCalendar from "@/components/general/AverageRatingCalender";
+import RatingCalendar from "@/components/general/RatingCalendar";
 
 interface animChar {
     char: string;
@@ -67,7 +67,7 @@ const LandingPageContent = () => {
             </div>
             <div className="flex flex-col justify-center items-center h-[60vh] border-b border-r border-forestGreen gap-y-5">
                 <div className="text-6xl lg:text-7xl font-bold text-forestGreen self-end mr-4 select-none">THIS YEAR</div>
-                <AverageRatingCalendar mode='explore' user_id="0ed33360-6a3f-4a1c-aa00-e4beda478b63" />
+                <RatingCalendar mode='explore' user_id="0ed33360-6a3f-4a1c-aa00-e4beda478b63" />
             </div>
             <div onClick={authModal.onOpen} className="h-[60vh] border-b border-forestGreen flex justify-center items-center
             text-3xl font-bold cursor-pointer group">
